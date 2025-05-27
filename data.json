@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "fecha": "2025-05-01",
+    "actividad": "Capacitación interna",
+    "permiso_sandra": "Sí",
+    "viatico": "No"
+  },
+  {
+    "fecha": "2025-05-02",
+    "actividad": "Supervisión de campo",
+    "permiso_sandra": "No",
+    "viatico": "Sí"
+  }
+]
+
