@@ -4,8 +4,8 @@ exports.handler = async function () {
   const token = process.env.GH_TOKEN;
   const octokit = new Octokit({ auth: token });
 
-  const repoOwner = "TU_USUARIO_GITHUB";
-  const repoName = "NOMBRE_DEL_REPOSITORIO";
+  const repoOwner = "Diego2377872";
+  const repoName = "agenda_web";
   const filePath = "data.json";
   const branch = "main";
 
