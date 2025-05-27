@@ -1,60 +1,43 @@
-const { Octokit } = require("@octokit/core");
+const { Octokit } = require("@octokit/rest");
 
-exports.handler = async function (event, context) {
+exports.handler = async function (event) {
   if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: "Método no permitido",
-    };
+    return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  const token = process.env.GITHUB_TOKEN;
-  const owner = process.env.REPO_OWNER;
-  const repo = process.env.REPO_NAME;
-  const path = "data.json";
-
+  const token = process.env.GH_TOKEN;
   const octokit = new Octokit({ auth: token });
 
+  const repoOwner = "Diego2377872";
+  const repoName = "agenda_web";
+  const filePath = "data.json";
+  const branch = "main";
+
+  const newData = JSON.parse(event.body);
+
   try {
-    // Obtenemos el SHA actual del archivo si existe
-    let sha;
-    try {
-      const response = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
-        owner,
-        repo,
-        path,
-      });
-      sha = response.data.sha;
-    } catch (error) {
-      if (error.status !== 404) {
-        throw error;
-      }
-      // El archivo no existe aún; lo crearemos sin SHA
-    }
-
-    const content = Buffer.from(event.body).toString("base64");
-
-    const commitMessage = "Actualizar data.json desde formulario web";
-
-    // Guardamos el nuevo contenido en el archivo data.json
-    await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
-      owner,
-      repo,
-      path,
-      message: commitMessage,
-      content,
-      sha, // si no hay SHA, GitHub creará el archivo
+    const { data: file } = await octokit.repos.getContent({
+      owner: repoOwner,
+      repo: repoName,
+      path: filePath,
+      ref: branch,
     });
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ mensaje: "Guardado correctamente" }),
-    };
+    const sha = file.sha;
+    const updatedContent = Buffer.from(JSON.stringify(newData, null, 2)).toString("base64");
+
+    await octokit.repos.createOrUpdateFileContents({
+      owner: repoOwner,
+      repo: repoName,
+      path: filePath,
+      message: "Actualizar data.json desde formulario",
+      content: updatedContent,
+      sha: sha,
+      branch: branch,
+    });
+
+    return { statusCode: 200, body: "Archivo actualizado correctamente" };
   } catch (error) {
-    console.error("Error al guardar datos:", error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
-    };
+    return { statusCode: 500, body: JSON.stringify(error.message) };
   }
 };
