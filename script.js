@@ -1,85 +1,95 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("actividadForm");
-  const tabla = document.querySelector("#tablaActividades tbody");
 
-  // Cargar datos desde el archivo JSON (si está en entorno estático, puedes comentar esto)
-  fetch("data.json")
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(agregarFila);
-    });
+// script.js
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const nuevaActividad = {
-      fecha: document.getElementById("fecha").value,
-      actividad: document.getElementById("actividad").value,
-      permiso_sandra: document.getElementById("permisoSandra").value,
-      viatico: document.getElementById("viatico").value
-    };
-    agregarFila(nuevaActividad);
-    form.reset();
-  });
+let datos = [];
 
-  function agregarFila(data) {
-    const fila = document.createElement("tr");
-    fila.innerHTML = `
-      <td>${data.fecha}</td>
-      <td>${data.actividad}</td>
-      <td>${data.permiso_sandra}</td>
-      <td>${data.viatico}</td>
-      <td>
-        <button onclick="editarFila(this)">Editar</button>
-        <button onclick="eliminarFila(this)">Eliminar</button>
-      </td>
-    `;
-    tabla.appendChild(fila);
+async function cargarDatos() {
+  try {
+    const response = await fetch('/.netlify/functions/get');
+    datos = await response.json();
+    renderizarTabla();
+  } catch (error) {
+    console.error("Error al cargar los datos:", error);
   }
-});
-
-function editarFila(boton) {
-  const fila = boton.parentElement.parentElement;
-  const celdas = fila.querySelectorAll("td");
-
-  const nuevosDatos = {
-    fecha: prompt("Editar Fecha:", celdas[0].textContent),
-    actividad: prompt("Editar Actividad:", celdas[1].textContent),
-    permiso_sandra: prompt("Editar Permiso entregado a Sandra:", celdas[2].textContent),
-    viatico: prompt("Editar Pedido de Viático (Sí/No):", celdas[3].textContent)
-  };
-
-  if (nuevosDatos.fecha) celdas[0].textContent = nuevosDatos.fecha;
-  if (nuevosDatos.actividad) celdas[1].textContent = nuevosDatos.actividad;
-  if (nuevosDatos.permiso_sandra) celdas[2].textContent = nuevosDatos.permiso_sandra;
-  if (nuevosDatos.viatico) celdas[3].textContent = nuevosDatos.viatico;
 }
 
-function eliminarFila(boton) {
-  const fila = boton.parentElement.parentElement;
-  fila.remove();
+function renderizarTabla() {
+  const tbody = document.querySelector("#tablaActividades tbody");
+  tbody.innerHTML = "";
+
+  datos.forEach((registro, index) => {
+    const fila = document.createElement("tr");
+
+    fila.innerHTML = `
+      <td>${registro.fecha}</td>
+      <td>${registro.actividad}</td>
+      <td>${registro.permiso_sandra}</td>
+      <td>${registro.viatico}</td>
+      <td><button onclick="eliminarRegistro(${index})">Eliminar</button></td>
+    `;
+
+    tbody.appendChild(fila);
+  });
+}
+
+document.getElementById("actividadForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const nuevoRegistro = {
+    fecha: document.getElementById("fecha").value,
+    actividad: document.getElementById("actividad").value,
+    permiso_sandra: document.getElementById("permisoSandra").value,
+    viatico: document.getElementById("viatico").value
+  };
+
+  datos.push(nuevoRegistro);
+  await guardarDatos();
+  renderizarTabla();
+  this.reset();
+});
+
+async function guardarDatos() {
+  try {
+    await fetch('/.netlify/functions/save', {
+      method: "POST",
+      body: JSON.stringify(datos)
+    });
+  } catch (error) {
+    console.error("Error al guardar los datos:", error);
+  }
+}
+
+function eliminarRegistro(index) {
+  datos.splice(index, 1);
+  guardarDatos();
+  renderizarTabla();
 }
 
 function exportarCSV() {
-  const filas = document.querySelectorAll("table tr");
-  let csv = "";
-  filas.forEach(fila => {
-    const celdas = fila.querySelectorAll("td, th");
-    const filaTexto = [...celdas].map(td => `"${td.textContent}"`).join(",");
-    csv += filaTexto + "\n";
+  let csv = "Fecha,Actividad,Permiso entregado a Sandra,Pedido de Viático\n";
+  datos.forEach(d => {
+    csv += `${d.fecha},${d.actividad},${d.permiso_sandra},${d.viatico}\n`;
   });
-  descargarArchivo(csv, "actividades.csv", "text/csv");
+
+  const blob = new Blob([csv], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "actividades.csv";
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
 function exportarExcel() {
-  let tablaHTML = document.querySelector("table").outerHTML;
-  let dataUri = 'data:application/vnd.ms-excel,' + encodeURIComponent(tablaHTML);
-  descargarArchivo(dataUri, "actividades.xls");
+  let tabla = document.getElementById("tablaActividades").outerHTML;
+  let blob = new Blob([tabla], { type: "application/vnd.ms-excel" });
+  let url = URL.createObjectURL(blob);
+  let a = document.createElement("a");
+  a.href = url;
+  a.download = "actividades.xls";
+  a.click();
+  URL.revokeObjectURL(url);
 }
 
-function descargarArchivo(contenido, nombre, tipo = "text/plain") {
-  const blob = new Blob([contenido], { type: tipo });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = nombre;
-  link.click();
-}
+window.onload = cargarDatos;
+
