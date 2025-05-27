@@ -19,8 +19,8 @@ exports.handler = async function () {
 
     // Configuración centralizada (cámbiala según tu repo)
     const repoConfig = {
-      owner: "TU_USUARIO_GITHUB",       // Reemplázalo
-      repo: "NOMBRE_DEL_REPOSITORIO",   // Reemplázalo
+      owner: "Diego2377872",       // Reemplázalo
+      repo: "agenda_web",   // Reemplázalo
       path: "data.json",
       branch: "main",
       headers: {
