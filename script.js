@@ -1,113 +1,85 @@
-const API_GET = "/.netlify/functions/getData";
-const API_POST = "/.netlify/functions/saveData";
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("actividadForm");
+  const tabla = document.querySelector("#tablaActividades tbody");
 
-const form = document.getElementById("actividadForm");
-const tabla = document.getElementById("tablaActividades").querySelector("tbody");
+  // Cargar datos desde el archivo JSON (si está en entorno estático, puedes comentar esto)
+  fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(agregarFila);
+    });
 
-let actividades = [];
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const nuevaActividad = {
+      fecha: document.getElementById("fecha").value,
+      actividad: document.getElementById("actividad").value,
+      permiso_sandra: document.getElementById("permisoSandra").value,
+      viatico: document.getElementById("viatico").value
+    };
+    agregarFila(nuevaActividad);
+    form.reset();
+  });
 
-// Cargar datos al iniciar
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const res = await fetch(API_GET);
-    if (!res.ok) throw new Error("No se pudo cargar datos");
-    actividades = await res.json();
-    renderizarTabla();
-  } catch (err) {
-    console.error("Error al cargar datos:", err);
-    actividades = [];
-    renderizarTabla();
-  }
-});
-
-// Agregar actividad
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const nueva = {
-    fecha: document.getElementById("fecha").value,
-    actividad: document.getElementById("actividad").value,
-    permisoSandra: document.getElementById("permisoSandra").value,
-    viatico: document.getElementById("viatico").value,
-  };
-
-  actividades.push(nueva);
-  renderizarTabla();
-  form.reset();
-
-  try {
-    await guardarDatos();
-  } catch (err) {
-    alert("❌ Error al guardar en GitHub.");
-    console.error(err);
-  }
-});
-
-// Renderizar tabla
-function renderizarTabla() {
-  tabla.innerHTML = "";
-  actividades.forEach((a, i) => {
+  function agregarFila(data) {
     const fila = document.createElement("tr");
     fila.innerHTML = `
-      <td>${a.fecha}</td>
-      <td>${a.actividad}</td>
-      <td>${a.permisoSandra}</td>
-      <td>${a.viatico}</td>
-      <td><button onclick="eliminar(${i})">🗑️</button></td>
+      <td>${data.fecha}</td>
+      <td>${data.actividad}</td>
+      <td>${data.permiso_sandra}</td>
+      <td>${data.viatico}</td>
+      <td>
+        <button onclick="editarFila(this)">Editar</button>
+        <button onclick="eliminarFila(this)">Eliminar</button>
+      </td>
     `;
     tabla.appendChild(fila);
-  });
-}
-
-// Eliminar actividad
-async function eliminar(index) {
-  if (!confirm("¿Eliminar esta actividad?")) return;
-  actividades.splice(index, 1);
-  renderizarTabla();
-  try {
-    await guardarDatos();
-  } catch (err) {
-    alert("❌ Error al guardar tras eliminar.");
-    console.error(err);
   }
+});
+
+function editarFila(boton) {
+  const fila = boton.parentElement.parentElement;
+  const celdas = fila.querySelectorAll("td");
+
+  const nuevosDatos = {
+    fecha: prompt("Editar Fecha:", celdas[0].textContent),
+    actividad: prompt("Editar Actividad:", celdas[1].textContent),
+    permiso_sandra: prompt("Editar Permiso entregado a Sandra:", celdas[2].textContent),
+    viatico: prompt("Editar Pedido de Viático (Sí/No):", celdas[3].textContent)
+  };
+
+  if (nuevosDatos.fecha) celdas[0].textContent = nuevosDatos.fecha;
+  if (nuevosDatos.actividad) celdas[1].textContent = nuevosDatos.actividad;
+  if (nuevosDatos.permiso_sandra) celdas[2].textContent = nuevosDatos.permiso_sandra;
+  if (nuevosDatos.viatico) celdas[3].textContent = nuevosDatos.viatico;
 }
 
-// Guardar datos actualizados en GitHub
-async function guardarDatos() {
-  const res = await fetch(API_POST, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(actividades)
-  });
-
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.details || "Error desconocido");
-  }
+function eliminarFila(boton) {
+  const fila = boton.parentElement.parentElement;
+  fila.remove();
 }
 
-// Exportar CSV
 function exportarCSV() {
-  const rows = [
-    ["Fecha", "Actividad", "Permiso entregado a Sandra", "Pedido de Viático"],
-    ...actividades.map(a => [a.fecha, a.actividad, a.permisoSandra, a.viatico])
-  ];
-
-  const csv = rows.map(r => r.map(v => `"${v}"`).join(",")).join("\n");
-  const blob = new Blob([csv], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "actividades.csv";
-  a.click();
-  URL.revokeObjectURL(url);
+  const filas = document.querySelectorAll("table tr");
+  let csv = "";
+  filas.forEach(fila => {
+    const celdas = fila.querySelectorAll("td, th");
+    const filaTexto = [...celdas].map(td => `"${td.textContent}"`).join(",");
+    csv += filaTexto + "\n";
+  });
+  descargarArchivo(csv, "actividades.csv", "text/csv");
 }
 
-// Exportar Excel (XLSX)
 function exportarExcel() {
-  const wb = XLSX.utils.book_new();
-  const ws = XLSX.utils.json_to_sheet(actividades);
-  XLSX.utils.book_append_sheet(wb, ws, "Actividades");
-  XLSX.writeFile(wb, "actividades.xlsx");
+  let tablaHTML = document.querySelector("table").outerHTML;
+  let dataUri = 'data:application/vnd.ms-excel,' + encodeURIComponent(tablaHTML);
+  descargarArchivo(dataUri, "actividades.xls");
 }
 
+function descargarArchivo(contenido, nombre, tipo = "text/plain") {
+  const blob = new Blob([contenido], { type: tipo });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = nombre;
+  link.click();
+}
