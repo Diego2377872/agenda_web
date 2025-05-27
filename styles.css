@@ -1,15 +1,13 @@
-/* Variables de color y tipografía */
 :root {
-  --primary-color: #4361ee;  /* Azul moderno */
-  --hover-color: #3a56d4;    /* Azul oscuro para hovers */
-  --error-color: #e63946;    /* Rojo para errores */
-  --success-color: #2a9d8f;  /* Verde para éxito */
-  --text-color: #333;        /* Color principal de texto */
-  --light-gray: #f8f9fa;     /* Fondo claro */
-  --border-color: #dee2e6;   /* Bordes suaves */
+  --primary-color: #4361ee;
+  --hover-color: #3a56d4;
+  --error-color: #e63946;
+  --success-color: #2a9d8f;
+  --text-color: #333;
+  --light-gray: #f8f9fa;
+  --border-color: #dee2e6;
 }
 
-/* Reset básico y tipografía */
 body {
   font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   line-height: 1.6;
@@ -18,10 +16,9 @@ body {
   margin: 0;
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto; /* Centrar el contenido */
+  margin: 0 auto;
 }
 
-/* Formulario mejorado */
 form {
   background: white;
   padding: 20px;
@@ -34,7 +31,6 @@ form {
   align-items: flex-end;
 }
 
-/* Inputs y botones */
 input, select, button {
   padding: 10px 12px;
   border: 1px solid var(--border-color);
@@ -64,7 +60,6 @@ button:hover {
   transform: translateY(-1px);
 }
 
-/* Tabla profesional */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -89,34 +84,6 @@ tr:hover {
   background-color: rgba(67, 97, 238, 0.05);
 }
 
-/* Botones de acción */
-button.editar {
-  background-color: #ffb703; /* Amarillo */
-}
-
-button.eliminar {
-  background-color: var(--error-color); /* Rojo */
-}
-
-/* Mensajes de feedback */
-.feedback {
-  padding: 10px;
-  border-radius: 4px;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.feedback.success {
-  background-color: rgba(42, 157, 143, 0.2);
-  color: var(--success-color);
-}
-
-.feedback.error {
-  background-color: rgba(230, 57, 70, 0.2);
-  color: var(--error-color);
-}
-
-/* Responsive */
 @media (max-width: 768px) {
   form {
     flex-direction: column;
