@@ -1,134 +1,111 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("actividadForm");
-  const tabla = document.querySelector("#tablaActividades tbody");
-  const feedback = document.createElement("div"); // Para mensajes de estado
-  feedback.style.margin = "10px 0";
-  form.after(feedback);
+const API_GET = "/.netlify/functions/getData";
+const API_POST = "/.netlify/functions/saveData";
 
-  let datos = [];
+const form = document.getElementById("actividadForm");
+const tabla = document.getElementById("tablaActividades").querySelector("tbody");
 
-  // Cargar datos iniciales
-  const cargarDatos = () => {
-    fetch("/.netlify/functions/getData") // Cambiado a getData
-      .then(res => {
-        if (!res.ok) throw new Error("Error al cargar datos");
-        return res.json();
-      })
-      .then(data => {
-        datos = data;
-        tabla.innerHTML = "";
-        data.forEach(agregarFila);
-      })
-      .catch(err => {
-        feedback.textContent = "❌ " + err.message;
-        console.error(err);
-      });
-  };
+let actividades = [];
 
-  // Agregar nueva actividad
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const nuevaActividad = {
-      fecha: document.getElementById("fecha").value,
-      actividad: document.getElementById("actividad").value,
-      permiso_sandra: document.getElementById("permisoSandra").value,
-      viatico: document.getElementById("viatico").value
-    };
-
-    try {
-      await guardarDatos([...datos, nuevaActividad]);
-      form.reset();
-      feedback.textContent = "✅ Actividad agregada";
-    } catch (err) {
-      feedback.textContent = "❌ Error al guardar";
-    }
-  });
-
-  // Helpers
-  const agregarFila = (data, index) => {
-    const fila = document.createElement("tr");
-    fila.innerHTML = 
-      <td>${data.fecha}</td>
-      <td>${data.actividad}</td>
-      <td>${data.permiso_sandra}</td>
-      <td>${data.viatico}</td>
-      <td>
-        <button class="editar">Editar</button>
-        <button class="eliminar">Eliminar</button>
-      </td>
-    ;
-    fila.querySelector(".editar").addEventListener("click", () => editarFila(index));
-    fila.querySelector(".eliminar").addEventListener("click", () => eliminarFila(index));
-    tabla.appendChild(fila);
-  };
-
-  const editarFila = (index) => {
-    const actividad = datos[index];
-    const nuevosDatos = {
-      fecha: prompt("Fecha:", actividad.fecha),
-      actividad: prompt("Actividad:", actividad.actividad),
-      permiso_sandra: prompt("Permiso Sandra:", actividad.permiso_sandra),
-      viatico: prompt("Viático (Sí/No):", actividad.viatico)
-    };
-
-    if (Object.values(nuevosDatos).every(Boolean)) {
-      datos[index] = nuevosDatos;
-      guardarDatos(datos);
-    }
-  };
-
-  const eliminarFila = (index) => {
-    if (confirm("¿Eliminar esta actividad?")) {
-      datos.splice(index, 1);
-      guardarDatos(datos);
-    }
-  };
-
-  const guardarDatos = async (nuevosDatos) => {
-    try {
-      const res = await fetch("/.netlify/functions/saveData", { // Cambiado a saveData
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(nuevosDatos)
-      });
-
-      if (!res.ok) throw new Error("Error en el servidor");
-      
-      datos = nuevosDatos;
-      tabla.innerHTML = "";
-      datos.forEach(agregarFila);
-      return true;
-    } catch (err) {
-      feedback.textContent = "❌ Error al guardar cambios";
-      console.error(err);
-      return false;
-    }
-  };
-
-  // Exportadores
-  window.exportarCSV = () => {
-    const filas = Array.from(tabla.querySelectorAll("tr"));
-    const headers = Array.from(document.querySelectorAll("th")).map(th => "${th.textContent}").join(",");
-    const csv = [
-      headers,
-      ...filas.map(tr => 
-        Array.from(tr.querySelectorAll("td")).map(td => "${td.textContent}").join(",")
-      )
-    ].join("\n");
-
-    descargarArchivo(csv, "actividades.csv", "text/csv");
-  };
-
-  // Inicialización
-  cargarDatos();
+// Cargar datos al iniciar
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(API_GET);
+    const data = await res.json();
+    actividades = data || [];
+    renderizarTabla();
+  } catch (err) {
+    console.error("Error al cargar datos:", err);
+  }
 });
 
-function descargarArchivo(contenido, nombre, tipo = "text/plain") {
-  const blob = new Blob([contenido], { type: tipo });
+// Agregar actividad
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const nueva = {
+    fecha: document.getElementById("fecha").value,
+    actividad: document.getElementById("actividad").value,
+    permisoSandra: document.getElementById("permisoSandra").value,
+    viatico: document.getElementById("viatico").value,
+  };
+
+  actividades.push(nueva);
+  renderizarTabla();
+  form.reset();
+
+  try {
+    await guardarDatos();
+  } catch (err) {
+    alert("❌ Error al guardar en GitHub.");
+    console.error(err);
+  }
+});
+
+// Renderizar tabla
+function renderizarTabla() {
+  tabla.innerHTML = "";
+  actividades.forEach((a, i) => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${a.fecha}</td>
+      <td>${a.actividad}</td>
+      <td>${a.permisoSandra}</td>
+      <td>${a.viatico}</td>
+      <td><button onclick="eliminar(${i})">🗑️</button></td>
+    `;
+    tabla.appendChild(fila);
+  });
+}
+
+// Eliminar actividad
+async function eliminar(index) {
+  if (!confirm("¿Eliminar esta actividad?")) return;
+  actividades.splice(index, 1);
+  renderizarTabla();
+  try {
+    await guardarDatos();
+  } catch (err) {
+    alert("❌ Error al guardar tras eliminar.");
+    console.error(err);
+  }
+}
+
+// Guardar datos actualizados en GitHub
+async function guardarDatos() {
+  const res = await fetch(API_POST, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(actividades)
+  });
+
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.details || "Error desconocido");
+  }
+}
+
+// Exportar CSV
+function exportarCSV() {
+  const rows = [
+    ["Fecha", "Actividad", "Permiso entregado a Sandra", "Pedido de Viático"],
+    ...actividades.map(a => [a.fecha, a.actividad, a.permisoSandra, a.viatico])
+  ];
+
+  const csv = rows.map(r => r.map(v => `"${v}"`).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = nombre;
+  a.download = "actividades.csv";
   a.click();
   URL.revokeObjectURL(url);
 }
+
+// Exportar Excel (XLSX)
+function exportarExcel() {
+  const wb = XLSX.utils.book_new();
+  const ws = XLSX.utils.json_to_sheet(actividades);
+  XLSX.utils.book_append_sheet(wb, ws, "Actividades");
+  XLSX.writeFile(wb, "actividades.xlsx");
+}
+
