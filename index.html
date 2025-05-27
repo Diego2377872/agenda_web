@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +10,8 @@
   <h1>Registro de Actividades</h1>
   
   <form id="actividadForm">
-    <input type="date" id="fecha" required placeholder="Fecha" />
+    <input type="date" id="fechaInicio" required placeholder="Fecha Inicial" />
+    <input type="date" id="fechaFin" required placeholder="Fecha Final" />
     <input type="text" id="actividad" required placeholder="Actividad" />
     <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
     <select id="viatico">
@@ -25,7 +25,8 @@
   <table id="tablaActividades">
     <thead>
       <tr>
-        <th>Fecha</th>
+        <th>Fecha Inicial</th>
+        <th>Fecha Final</th>
         <th>Actividad</th>
         <th>Permiso entregado a Sandra</th>
         <th>Pedido de Viático (Sí/No)</th>
@@ -35,9 +36,9 @@
     <tbody></tbody>
   </table>
 
-  <button onclick="exportarCSV()">Exportar CSV</button>
   <button onclick="exportarExcel()">Exportar Excel</button>
 
   <script src="script.js"></script>
 </body>
 </html>
+
