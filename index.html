@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registro de Actividades</title>
-  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Registro de Actividades</h1>
   
   <form id="actividadForm">
-    <input type="date" id="fechaInicio" required placeholder="Fecha Inicial" />
-    <input type="date" id="fechaFin" required placeholder="Fecha Final" />
+    <input type="date" id="fechaInicio" required />
+    <input type="date" id="fechaFin" required />
     <input type="text" id="actividad" required placeholder="Actividad" />
     <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
     <select id="viatico">
@@ -22,7 +21,7 @@
     <button type="submit">Agregar</button>
   </form>
 
-  <table id="tablaActividades">
+  <table id="tablaActividades" border="1">
     <thead>
       <tr>
         <th>Fecha Inicial</th>
@@ -38,7 +37,47 @@
 
   <button onclick="exportarExcel()">Exportar Excel</button>
 
-  <script src="script.js"></script>
+  <!-- Agregá SheetJS -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <!-- Tu script -->
+  <script>
+    document.getElementById('actividadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const fechaInicio = document.getElementById('fechaInicio').value;
+      const fechaFin = document.getElementById('fechaFin').value;
+      const actividad = document.getElementById('actividad').value;
+      const permisoSandra = document.getElementById('permisoSandra').value;
+      const viatico = document.getElementById('viatico').value;
+
+      const tabla = document.getElementById('tablaActividades').getElementsByTagName('tbody')[0];
+      const nuevaFila = tabla.insertRow();
+
+      nuevaFila.innerHTML = `
+        <td>${fechaInicio}</td>
+        <td>${fechaFin}</td>
+        <td>${actividad}</td>
+        <td>${permisoSandra}</td>
+        <td>${viatico}</td>
+        <td><button onclick="eliminarFila(this)">Eliminar</button></td>
+      `;
+
+      document.getElementById('actividadForm').reset();
+    });
+
+    function eliminarFila(boton) {
+      const fila = boton.closest('tr');
+      fila.remove();
+    }
+
+    function exportarExcel() {
+      const tabla = document.getElementById('tablaActividades');
+      const wb = XLSX.utils.table_to_book(tabla, { sheet: "Actividades" });
+      XLSX.writeFile(wb, "registro_actividades.xlsx");
+    }
+  </script>
 </body>
 </html>
+
 
