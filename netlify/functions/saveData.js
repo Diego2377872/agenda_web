@@ -4,9 +4,6 @@ exports.handler = async function (event, context) {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
       body: "Método no permitido",
     };
   }
@@ -19,7 +16,7 @@ exports.handler = async function (event, context) {
   const octokit = new Octokit({ auth: token });
 
   try {
-    // Obtener el SHA actual (si existe)
+    // Obtenemos el SHA actual del archivo si existe
     let sha;
     try {
       const response = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
@@ -32,38 +29,32 @@ exports.handler = async function (event, context) {
       if (error.status !== 404) {
         throw error;
       }
-      // Si es 404, el archivo aún no existe: se creará
+      // El archivo no existe aún; lo crearemos sin SHA
     }
 
     const content = Buffer.from(event.body).toString("base64");
-    const message = "Actualizar data.json desde formulario web";
 
+    const commitMessage = "Actualizar data.json desde formulario web";
+
+    // Guardamos el nuevo contenido en el archivo data.json
     await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
       owner,
       repo,
       path,
-      message,
+      message: commitMessage,
       content,
-      ...(sha && { sha }) // solo incluir SHA si existe
+      sha, // si no hay SHA, GitHub creará el archivo
     });
 
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify({ mensaje: "Guardado correctamente" }),
     };
   } catch (error) {
-    console.error("Error al guardar datos:", error.message);
+    console.error("Error al guardar datos:", error);
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
       body: JSON.stringify({ error: error.message }),
     };
   }
 };
-
