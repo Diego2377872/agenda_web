@@ -10,11 +10,13 @@ let actividades = [];
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(API_GET);
-    const data = await res.json();
-    actividades = data || [];
+    if (!res.ok) throw new Error("No se pudo cargar datos");
+    actividades = await res.json();
     renderizarTabla();
   } catch (err) {
     console.error("Error al cargar datos:", err);
+    actividades = [];
+    renderizarTabla();
   }
 });
 
