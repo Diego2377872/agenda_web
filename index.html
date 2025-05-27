@@ -4,184 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registro de Actividades</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    input, select, button {
-      padding: 8px;
-      font-size: 1em;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    th, td {
-      padding: 8px;
-      border: 1px solid #ccc;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    .eliminar, .editar {
-      background-color: #3498db;
-      color: white;
-      border: none;
-      cursor: pointer;
-      padding: 5px 10px;
-      margin-right: 5px;
-    }
-
-    .eliminar {
-      background-color: #e74c3c;
-    }
-
-    .eliminar:hover {
-      background-color: #c0392b;
-    }
-
-    .editar:hover {
-      background-color: #2980b9;
-    }
-
-    .export-btn {
-      margin-top: 20px;
-      padding: 10px 15px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <h1>Registro de Actividades</h1>
   
   <form id="actividadForm">
-    <input type="date" id="fechaInicio" required />
-    <input type="date" id="fechaFin" required />
+    <input type="date" id="fecha" required placeholder="Fecha" />
     <input type="text" id="actividad" required placeholder="Actividad" />
     <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
-    <select id="viatico" required>
+    <select id="viatico">
       <option value="">¿Viático?</option>
       <option value="Sí">Sí</option>
       <option value="No">No</option>
     </select>
-    <button type="submit" id="submitBtn">Agregar</button>
+    <button type="submit">Agregar</button>
   </form>
 
   <table id="tablaActividades">
     <thead>
       <tr>
-        <th>Fecha Inicial</th>
-        <th>Fecha Final</th>
+        <th>Fecha</th>
         <th>Actividad</th>
         <th>Permiso entregado a Sandra</th>
-        <th>Pedido de Viático</th>
+        <th>Pedido de Viático (Sí/No)</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
 
-  <button class="export-btn" onclick="exportarExcel()">Exportar a Excel</button>
-
-  <!-- SheetJS -->
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
-  <script>
-    const form = document.getElementById('actividadForm');
-    const tablaBody = document.querySelector('#tablaActividades tbody');
-    const submitBtn = document.getElementById('submitBtn');
-
-    let filaEditando = null;
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const fechaInicio = document.getElementById('fechaInicio').value;
-      const fechaFin = document.getElementById('fechaFin').value;
-      const actividad = document.getElementById('actividad').value.trim();
-      const permisoSandra = document.getElementById('permisoSandra').value.trim();
-      const viatico = document.getElementById('viatico').value;
-
-      if (!fechaInicio || !fechaFin || !actividad || !viatico) {
-        alert('Por favor, complete todos los campos obligatorios.');
-        return;
-      }
-
-      if (filaEditando) {
-        // Editar fila existente
-        filaEditando.cells[0].textContent = fechaInicio;
-        filaEditando.cells[1].textContent = fechaFin;
-        filaEditando.cells[2].textContent = actividad;
-        filaEditando.cells[3].textContent = permisoSandra;
-        filaEditando.cells[4].textContent = viatico;
-        filaEditando = null;
-        submitBtn.textContent = "Agregar";
-      } else {
-        // Agregar nueva fila
-        const fila = tablaBody.insertRow();
-
-        fila.innerHTML = `
-          <td>${fechaInicio}</td>
-          <td>${fechaFin}</td>
-          <td>${actividad}</td>
-          <td>${permisoSandra}</td>
-          <td>${viatico}</td>
-          <td>
-            <button class="editar" onclick="editarFila(this)">Editar</button>
-            <button class="eliminar" onclick="eliminarFila(this)">Eliminar</button>
-          </td>
-        `;
-      }
-
-      form.reset();
-    });
-
-    function eliminarFila(boton) {
-      const fila = boton.closest('tr');
-      if (fila === filaEditando) {
-        form.reset();
-        submitBtn.textContent = "Agregar";
-        filaEditando = null;
-      }
-      fila.remove();
-    }
-
-    function editarFila(boton) {
-      filaEditando = boton.closest('tr');
-
-      document.getElementById('fechaInicio').value = filaEditando.cells[0].textContent;
-      document.getElementById('fechaFin').value = filaEditando.cells[1].textContent;
-      document.getElementById('actividad').value = filaEditando.cells[2].textContent;
-      document.getElementById('permisoSandra').value = filaEditando.cells[3].textContent;
-      document.getElementById('viatico').value = filaEditando.cells[4].textContent;
-
-      submitBtn.textContent = "Guardar Cambios";
-    }
-
-    function exportarExcel() {
-      const tabla = document.getElementById('tablaActividades');
-      const wb = XLSX.utils.table_to_book(tabla, { sheet: "Actividades" });
-      XLSX.writeFile(wb, "registro_actividades.xlsx");
-    }
-  </script>
+  <button onclick="exportarCSV()">Exportar CSV</button>
+  
+  <script src="script.js"></script>
 </body>
 </html>
-
-
