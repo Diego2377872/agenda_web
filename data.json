@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "fecha": "2025-05-12",
+    "institucion": "MADES",
+    "km_recorrido": "150",
+    "lugar_evento": "MADES 28",
+    "expediente": "13403",
+    "informe": "Participación del Taller...",
+    "estado": "P/firma DGAF"
+  }
+]
