@@ -2,26 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registro de Actividades</title>
-  <style>
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-    th { background-color: #f2f2f2; }
-    form { margin-bottom: 20px; }
-    input, select { margin: 5px; padding: 5px; }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h2>Registro de Actividades</h2>
+  <h1>Registro de Actividades</h1>
+  
   <form id="actividadForm">
-    <input type="date" id="fecha" required />
-    <input type="text" id="actividad" placeholder="Actividad" required />
-    <select id="permisoSandra">
-      <option value="Sí">Sí</option>
-      <option value="No">No</option>
-    </select>
+    <input type="date" id="fechaInicio" required placeholder="Fecha Inicial" />
+    <input type="date" id="fechaFin" required placeholder="Fecha Final" />
+    <input type="text" id="actividad" required placeholder="Actividad" />
+    <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
     <select id="viatico">
+      <option value="">¿Viático?</option>
       <option value="Sí">Sí</option>
       <option value="No">No</option>
     </select>
@@ -31,7 +25,8 @@
   <table id="tablaActividades">
     <thead>
       <tr>
-        <th>Fecha</th>
+        <th>Fecha Inicial</th>
+        <th>Fecha Final</th>
         <th>Actividad</th>
         <th>Permiso entregado a Sandra</th>
         <th>Pedido de Viático (Sí/No)</th>
@@ -41,9 +36,9 @@
     <tbody></tbody>
   </table>
 
-  <button onclick="exportarCSV()">Exportar CSV</button>
   <button onclick="exportarExcel()">Exportar Excel</button>
 
   <script src="script.js"></script>
 </body>
 </html>
+
