@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Actividades</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Registro de Actividades</h1>
+  
+  <form id="actividadForm">
+    <input type="date" id="fecha" required placeholder="Fecha" />
+    <input type="text" id="actividad" required placeholder="Actividad" />
+    <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
+    <select id="viatico">
+      <option value="">¿Viático?</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+    <button type="submit">Agregar</button>
+  </form>
+
+  <table id="tablaActividades">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Actividad</th>
+        <th>Permiso entregado a Sandra</th>
+        <th>Pedido de Viático (Sí/No)</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <button onclick="exportarCSV()">Exportar CSV</button>
+  <button onclick="exportarExcel()">Exportar Excel</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

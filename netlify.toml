@@ -1,0 +1,19 @@
+[build]
+  command = "npm install"       # Instala dependencias
+  publish = "."                # Carpeta raíz del sitio (HTML/JS/CSS)
+  functions = "netlify/functions"  # Carpeta de funciones serverless
+
+[context.production.environment]
+  NODE_VERSION = "18"          # Usa Node.js 18 (LTS estable)
+  GH_TOKEN = "@github_token"   # Referencia a la variable de entorno en Netlify
+
+[dev]
+  functions = "netlify/functions"
+  targetPort = 8888            # Puerto para netlify dev
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public, max-age=3600"  # Cache básico para assets
