@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("actividadForm");
   const tabla = document.querySelector("#tablaActividades tbody");
   const feedback = document.createElement("div"); // Para mensajes de estado
