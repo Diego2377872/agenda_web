@@ -8,30 +8,23 @@ exports.handler = async function () {
   const octokit = new Octokit({ auth: token });
 
   try {
-    const response = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+    const file = await octokit.request("GET /repos/{owner}/{repo}/contents/data.json", {
       owner,
       repo,
       path: "data.json"
     });
 
-    const content = Buffer.from(response.data.content, "base64").toString("utf8");
-
+    const content = Buffer.from(file.data.content, "base64").toString("utf8");
     return {
       statusCode: 200,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*"
-      },
       body: content
     };
   } catch (error) {
-    console.error("Error al obtener datos:", error.message);
+    console.error("Error al obtener datos:", error);
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      },
       body: JSON.stringify({ error: error.message })
     };
   }
 };
+
