@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let datos = [];
 
-  const cargarDatos = () => {
-    // Simula la carga de datos
-    datos = [
-      { fecha: "2025-05-12", actividad: "Taller NDC", permiso_sandra: "Sí", viatico: "No" },
-      // Agrega más datos si es necesario
-    ];
-    tabla.innerHTML = "";
-    datos.forEach(agregarFila);
+  const cargarDatos = async () => {
+    try {
+      const response = await fetch("/.netlify/functions/getData");
+      if (!response.ok) throw new Error("Error al cargar datos");
+      const data = await response.json();
+      datos = data;
+      tabla.innerHTML = "";
+      datos.forEach(agregarFila);
+    } catch (error) {
+      feedback.textContent = "❌ " + error.message;
+    }
   };
 
   form.addEventListener("submit", async (e) => {
@@ -27,11 +30,26 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     datos.push(nuevaActividad);
+    await guardarDatos(datos);
     form.reset();
     feedback.textContent = "✅ Actividad agregada";
-    tabla.innerHTML = "";
-    datos.forEach(agregarFila);
   });
+
+  const guardarDatos = async (nuevosDatos) => {
+    try {
+      const response = await fetch("/.netlify/functions/saveData", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(nuevosDatos)
+      });
+
+      if (!response.ok) throw new Error("Error al guardar datos");
+      tabla.innerHTML = "";
+      nuevosDatos.forEach(agregarFila);
+    } catch (error) {
+      feedback.textContent = "❌ " + error.message;
+    }
+  };
 
   const agregarFila = (data) => {
     const fila = document.createElement("tr");
@@ -49,27 +67,4 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   cargarDatos();
-
-  window.exportarCSV = () => {
-    const filas = Array.from(tabla.querySelectorAll("tr"));
-    const headers = Array.from(document.querySelectorAll("th")).map(th => `"${th.textContent}"`).join(",");
-    const csv = [
-      headers,
-      ...filas.map(tr => 
-        Array.from(tr.querySelectorAll("td")).map(td => `"${td.textContent}"`).join(",")
-      )
-    ].join("\n");
-
-    descargarArchivo(csv, "actividades.csv", "text/csv");
-  };
-
-  function descargarArchivo(contenido, nombre, tipo = "text/plain") {
-    const blob = new Blob([contenido], { type: tipo });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = nombre;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
 });
