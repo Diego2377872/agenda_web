@@ -1,16 +1,16 @@
 {
-  "name": "agenda_web",
+  "name": "tabla_web",
   "version": "1.0.0",
-  "main": "index.html",  // Punto de entrada (opcional para Netlify)
+  "main": "index.html",
   "scripts": {
-    "start": "netlify dev",  // Para probar localmente
+    "start": "netlify dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@octokit/rest": "^19.0.7",  // Versión estable para GitHub API
-    "dotenv": "^16.0.3"          // Para variables de entorno en desarrollo
+    "@octokit/rest": "^19.0.7",
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
-    "netlify-cli": "^12.0.0"     // Para ejecutar Netlify localmente
+    "netlify-cli": "^12.0.0"
   }
 }
