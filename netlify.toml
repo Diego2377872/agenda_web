@@ -1,13 +1,11 @@
 [build]
   command = "npm install"
-  publish = "."  # Raíz del sitio estático
+  publish = "."
   functions = "netlify/functions"
 
 [context.production.environment]
   NODE_VERSION = "18"
-  GITHUB_TOKEN = "TU_TOKEN_GITHUB"
-  REPO_OWNER = "TU_USUARIO_O_ORGANIZACION"
-  REPO_NAME = "NOMBRE_DEL_REPOSITORIO"
+  GH_TOKEN = "@github_token"
 
 [dev]
   functions = "netlify/functions"
@@ -18,5 +16,4 @@
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Access-Control-Allow-Origin = "*"
     Cache-Control = "public, max-age=3600"
