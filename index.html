@@ -2,40 +2,48 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Actividades</title>
-  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
-<body>
-  <h1>Registro de Actividades</h1>
-  
-  <form id="actividadForm">
-    <input type="date" id="fecha" required placeholder="Fecha" />
-    <input type="text" id="actividad" required placeholder="Actividad" />
-    <input type="text" id="permisoSandra" placeholder="Permiso entregado a Sandra" />
-    <select id="viatico">
-      <option value="">¿Viático?</option>
-      <option value="Sí">Sí</option>
-      <option value="No">No</option>
-    </select>
-    <button type="submit">Agregar</button>
-  </form>
+<body class="bg-gray-100 p-6">
 
-  <table id="tablaActividades">
-    <thead>
-      <tr>
-        <th>Fecha</th>
-        <th>Actividad</th>
-        <th>Permiso entregado a Sandra</th>
-        <th>Pedido de Viático (Sí/No)</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="max-w-4xl mx-auto bg-white shadow-md rounded p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">📋 Registro de Actividades</h1>
 
-  <button onclick="exportarCSV()">Exportar CSV</button>
-  
+    <form id="actividadForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <input id="fecha" type="date" required class="border p-2 rounded" />
+      <input id="actividad" type="text" placeholder="Actividad" required class="border p-2 rounded" />
+      <input id="permisoSandra" type="text" placeholder="Permiso Sandra" class="border p-2 rounded" />
+      <input id="viatico" type="number" placeholder="Viático" class="border p-2 rounded" />
+      <button type="submit" class="col-span-full md:col-span-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        ➕ Agregar
+      </button>
+    </form>
+
+    <div class="flex justify-end mb-2">
+      <button id="exportExcel" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        📤 Exportar a Excel
+      </button>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table id="tablaActividades" class="min-w-full bg-white border border-gray-300 text-sm text-left rounded">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 border">Fecha</th>
+            <th class="px-4 py-2 border">Actividad</th>
+            <th class="px-4 py-2 border">Permiso Sandra</th>
+            <th class="px-4 py-2 border">Viático</th>
+            <th class="px-4 py-2 border">Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
