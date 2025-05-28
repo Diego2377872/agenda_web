@@ -26,5 +26,12 @@
     "actividad": "Oficina RE ",
     "permiso_sandra": "",
     "viatico": "no"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "Reunión Mohan Kohli ",
+    "permiso_sandra": "Si",
+    "viatico": "sí"
   }
 ]
