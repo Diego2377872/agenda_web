@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const nuevaActividad = {
-      fecha: document.getElementById("fecha").value,
+      fecha_inicial: document.getElementById("fechaInicial").value,
+      fecha_final: document.getElementById("fechaFinal").value,
       actividad: document.getElementById("actividad").value,
       permiso_sandra: document.getElementById("permisoSandra").value,
       viatico: document.getElementById("viatico").value
@@ -49,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     datos.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td class="border px-2 py-1">${data.fecha}</td>
+        <td class="border px-2 py-1">${data.fecha_inicial}</td>
+        <td class="border px-2 py-1">${data.fecha_final}</td>
         <td class="border px-2 py-1">${data.actividad}</td>
         <td class="border px-2 py-1">${data.permiso_sandra}</td>
         <td class="border px-2 py-1">${data.viatico}</td>
@@ -74,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", (e) => {
         const i = e.target.dataset.index;
         const item = datos[i];
-        document.getElementById("fecha").value = item.fecha;
+        document.getElementById("fechaInicial").value = item.fecha_inicial;
+        document.getElementById("fechaFinal").value = item.fecha_final;
         document.getElementById("actividad").value = item.actividad;
         document.getElementById("permisoSandra").value = item.permiso_sandra;
         document.getElementById("viatico").value = item.viatico;
