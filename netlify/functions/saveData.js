@@ -1,43 +1,58 @@
-const { Octokit } = require("@octokit/rest");
+const { Octokit } = require("@octokit/core");
 
-exports.handler = async function (event) {
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: "Method Not Allowed" };
+exports.handler = async function (event, context) {
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: 'Método no permitido' }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    };
   }
 
-  const token = process.env.GH_TOKEN;
+  const token = process.env.GITHUB_TOKEN;
+  const owner = process.env.REPO_OWNER;
+  const repo = process.env.REPO_NAME;
+  const data = JSON.parse(event.body);
+
   const octokit = new Octokit({ auth: token });
 
-  const repoOwner = "Diego2377872";
-  const repoName = "agenda_web";
-  const filePath = "data.json";
-  const branch = "main";
-
-  const newData = JSON.parse(event.body);
-
   try {
-    const { data: file } = await octokit.repos.getContent({
-      owner: repoOwner,
-      repo: repoName,
-      path: filePath,
-      ref: branch,
+    // Primero obtén el SHA del archivo existente
+    const getResponse = await octokit.request("GET /repos/{owner}/{repo}/contents/data.json", {
+      owner,
+      repo
     });
 
-    const sha = file.sha;
-    const updatedContent = Buffer.from(JSON.stringify(newData, null, 2)).toString("base64");
-
-    await octokit.repos.createOrUpdateFileContents({
-      owner: repoOwner,
-      repo: repoName,
-      path: filePath,
-      message: "Actualizar data.json desde formulario",
-      content: updatedContent,
-      sha: sha,
-      branch: branch,
+    // Actualiza el archivo
+    const updateResponse = await octokit.request("PUT /repos/{owner}/{repo}/contents/data.json", {
+      owner,
+      repo,
+      path: "data.json",
+      message: "Actualización de datos via Netlify",
+      content: Buffer.from(JSON.stringify(data, null, 2)).toString('base64'),
+      sha: getResponse.data.sha
     });
 
-    return { statusCode: 200, body: "Archivo actualizado correctamente" };
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ success: true }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
+    };
   } catch (error) {
-    return { statusCode: 500, body: JSON.stringify(error.message) };
-  }
-};
+    console.error("Error al guardar datos:", error);
+    return {
+      statusCode: error.status || 500,
+      body: JSON.stringify({ 
+        error: error.message,
+        details: error.response?.data 
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
