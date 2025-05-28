@@ -27,15 +27,26 @@
       </button>
     </form>
 
-    <div>
-      <div id="tabs" class="flex space-x-2 mb-4"></div>
-      <div id="tabContent"></div>
-    </div>
-
     <div class="flex justify-end mb-2">
       <button id="exportExcel" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
         📤 Exportar a Excel
       </button>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table id="tablaActividades" class="min-w-full bg-white border border-gray-300 text-sm text-left rounded">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 border">Fecha Inicial</th>
+            <th class="px-4 py-2 border">Fecha Final</th>
+            <th class="px-4 py-2 border">Actividad</th>
+            <th class="px-4 py-2 border">Permiso Sandra</th>
+            <th class="px-4 py-2 border">Viático</th>
+            <th class="px-4 py-2 border">Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
   </div>
 
