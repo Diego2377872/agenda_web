@@ -4,64 +4,64 @@ exports.handler = async function (event, context) {
   const token = process.env.GITHUB_TOKEN;
   const owner = process.env.REPO_OWNER;
   const repo = process.env.REPO_NAME;
-  const path = "data.json"; // archivo a actualizar
+  const path = "data.json"; // ruta relativa en el repo
 
   if (!token || !owner || !repo) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Faltan variables de entorno" }),
-      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
-    };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      body: JSON.stringify({ error: "Método no permitido" }),
-      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
+      body: JSON.stringify({ error: "Variables de entorno faltantes" }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     };
   }
 
   const octokit = new Octokit({ auth: token });
 
-  const body = JSON.parse(event.body || "{}");
+  let sha = "";
+  try {
+    const file = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+      owner,
+      repo,
+      path
+    });
+    sha = file.data.sha;
+  } catch (error) {
+    console.error("No se pudo obtener SHA:", error.message);
+  }
 
   try {
-    // 1. Obtener el archivo actual para recuperar el SHA
-    const { data: fileData } = await octokit.request("GET /repos/{owner}/{repo}/contents/{path}", {
+    const body = JSON.parse(event.body);
+
+    const response = await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
       owner,
       repo,
       path,
-    });
-
-    const sha = fileData.sha;
-
-    // 2. Codificar el nuevo contenido como base64
-    const updatedContent = Buffer.from(JSON.stringify(body, null, 2)).toString("base64");
-
-    // 3. Hacer el commit del archivo actualizado
-    await octokit.request("PUT /repos/{owner}/{repo}/contents/{path}", {
-      owner,
-      repo,
-      path,
-      message: "Actualizar data.json desde app web",
-      content: updatedContent,
-      sha: sha
+      message: "Actualizar data.json desde formulario web",
+      content: Buffer.from(JSON.stringify(body, null, 2)).toString("base64"),
+      sha: sha || undefined
     });
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: "Datos guardados correctamente" }),
-      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
+      body: JSON.stringify({ success: true }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     };
-
   } catch (error) {
-    console.error("Error al guardar:", error);
+    console.error("Error al guardar datos:", error);
     return {
-      statusCode: error.status || 500,
-      body: JSON.stringify({ error: error.message, details: error.response?.data }),
-      headers: { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
+      statusCode: 500,
+      body: JSON.stringify({ error: "Error al guardar datos", details: error.message }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      }
     };
   }
 };
+;
 
