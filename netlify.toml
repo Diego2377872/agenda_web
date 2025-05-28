@@ -1,19 +1,8 @@
 [build]
-  command = "npm install"
+  functions = "netlify/functions"
   publish = "."
-  functions = "netlify/functions"
 
-[context.production.environment]
-  NODE_VERSION = "18"
-  GH_TOKEN = "@github_token"
-
-[dev]
-  functions = "netlify/functions"
-  targetPort = 8888
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    Cache-Control = "public, max-age=3600"
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
