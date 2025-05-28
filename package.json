@@ -1,16 +1,8 @@
 {
   "name": "agenda_web",
   "version": "1.0.0",
-  "main": "index.html",
-  "scripts": {
-    "start": "netlify dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
-    "@octokit/rest": "^19.0.7",
-    "dotenv": "^16.0.3"
-  },
-  "devDependencies": {
-    "netlify-cli": "^12.0.0"
+    "@octokit/core": "^4.2.0"
   }
 }
+
