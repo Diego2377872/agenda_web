@@ -12,11 +12,16 @@
   <div class="max-w-4xl mx-auto bg-white shadow-md rounded p-6">
     <h1 class="text-2xl font-bold mb-4 text-center">📋 Registro de Actividades</h1>
 
-    <form id="actividadForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-      <input id="fecha" type="date" required class="border p-2 rounded" />
+    <form id="actividadForm" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+      <input id="fechaInicial" type="date" required class="border p-2 rounded" />
+      <input id="fechaFinal" type="date" required class="border p-2 rounded" />
       <input id="actividad" type="text" placeholder="Actividad" required class="border p-2 rounded" />
       <input id="permisoSandra" type="text" placeholder="Permiso Sandra" class="border p-2 rounded" />
-      <input id="viatico" type="number" placeholder="Viático" class="border p-2 rounded" />
+      <select id="viatico" class="border p-2 rounded" required>
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="sí">Sí</option>
+        <option value="no">No</option>
+      </select>
       <button type="submit" class="col-span-full md:col-span-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
         ➕ Agregar
       </button>
@@ -32,7 +37,8 @@
       <table id="tablaActividades" class="min-w-full bg-white border border-gray-300 text-sm text-left rounded">
         <thead class="bg-gray-100">
           <tr>
-            <th class="px-4 py-2 border">Fecha</th>
+            <th class="px-4 py-2 border">Fecha Inicial</th>
+            <th class="px-4 py-2 border">Fecha Final</th>
             <th class="px-4 py-2 border">Actividad</th>
             <th class="px-4 py-2 border">Permiso Sandra</th>
             <th class="px-4 py-2 border">Viático</th>
