@@ -77,16 +77,16 @@
     "viatico": "no"
   },
   {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "Reunión Mohan Kohli, y MADES ",
-    "permiso_sandra": "Si",
-    "viatico": "sí"
-  },
-  {
     "fecha_inicial": "2025-05-20",
     "fecha_final": "2025-05-21",
     "actividad": "CAPECO",
+    "permiso_sandra": "Entregado",
+    "viatico": "sí"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "Reunión Mohan Kohli, y MADES ",
     "permiso_sandra": "Entregado",
     "viatico": "sí"
   }
