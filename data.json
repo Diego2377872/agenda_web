@@ -1,24 +1,10 @@
 [
   {
-    "fecha_inicial": "2025-05-30",
-    "fecha_final": "2025-05-30",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado",
     "viatico": "no"
-  },
-  {
-    "fecha_inicial": "2025-05-27",
-    "fecha_final": "2025-05-29",
-    "actividad": "Reunión AEP y Japonese",
-    "permiso_sandra": "No",
-    "viatico": "sí"
-  },
-  {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADES",
-    "permiso_sandra": "Entregado ",
-    "viatico": "sí"
   },
   {
     "fecha_inicial": "2025-05-20",
@@ -28,10 +14,24 @@
     "viatico": "sí"
   },
   {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado",
+    "fecha_inicial": "2025-05-27",
+    "fecha_final": "2025-05-29",
+    "actividad": "Reunión AEP y Japonese",
+    "permiso_sandra": "No",
+    "viatico": "sí"
+  },
+  {
+    "fecha_inicial": "2025-05-30",
+    "fecha_final": "2025-05-30",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
     "viatico": "no"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MINISTERIO DEL AMBIENTE",
+    "permiso_sandra": "Entregado ",
+    "viatico": "sí"
   }
 ]
