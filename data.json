@@ -47,5 +47,12 @@
     "actividad": "Opera ",
     "permiso_sandra": "No",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-03-01",
+    "fecha_final": "2025-03-02",
+    "actividad": "Reunion DEAG",
+    "permiso_sandra": "No",
+    "viatico": "Si"
   }
 ]
