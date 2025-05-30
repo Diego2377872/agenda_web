@@ -26,5 +26,12 @@
     "actividad": "CAPECO ",
     "permiso_sandra": "Entregado ",
     "viatico": "sí"
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado",
+    "viatico": "no"
   }
 ]
