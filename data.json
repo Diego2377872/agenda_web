@@ -7,6 +7,13 @@
     "viatico": "no"
   },
   {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MINISTERIO DEL AMBIENTE",
+    "permiso_sandra": "Entregado ",
+    "viatico": "sí"
+  },
+  {
     "fecha_inicial": "2025-05-20",
     "fecha_final": "2025-05-21",
     "actividad": "CAPECO ",
@@ -28,10 +35,10 @@
     "viatico": "no"
   },
   {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MINISTERIO DEL AMBIENTE",
-    "permiso_sandra": "Entregado ",
-    "viatico": "sí"
+    "fecha_inicial": "2025-04-01",
+    "fecha_final": "2025-05-02",
+    "actividad": "Park",
+    "permiso_sandra": "No",
+    "viatico": "No"
   }
 ]
