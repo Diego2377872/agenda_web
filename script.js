@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let anioActual = new Date().getFullYear();
   let ordenAscendente = true;
 
-  // Inicializar flatpickr en los inputs de fecha
   flatpickr("#fechaInicial", { dateFormat: "Y-m-d" });
   flatpickr("#fechaFinal", { dateFormat: "Y-m-d" });
 
@@ -59,11 +58,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderizarTabla = () => {
     tabla.innerHTML = "";
+
+    // Mostrar mes y año actual arriba de la tabla (opcional)
+    let tituloMes = document.getElementById("tituloMes");
+    if (!tituloMes) {
+      tituloMes = document.createElement("h2");
+      tituloMes.id = "tituloMes";
+      tituloMes.className = "text-xl font-semibold mb-4";
+      tabla.parentElement.parentElement.insertBefore(tituloMes, tabla.parentElement);
+    }
+    const meses = [
+      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    ];
+    tituloMes.textContent = `Mostrando actividades de ${meses[mesActual]} ${anioActual}`;
+
+    // Filtrar datos por mes y año
     const datosFiltrados = datos.filter(d => {
       const fecha = new Date(d.fecha_inicial);
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
-    datosFiltrados.forEach((data, index) => {
+
+    datosFiltrados.forEach((data) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
         <td class="border px-2 py-1">${data.fecha_inicial}</td>
@@ -72,36 +88,41 @@ document.addEventListener("DOMContentLoaded", () => {
         <td class="border px-2 py-1">${data.permiso_sandra}</td>
         <td class="border px-2 py-1">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
-          <button class="editar bg-yellow-400 px-2 py-1 rounded" data-index="${index}">✏️</button>
-          <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
+          <button class="editar bg-yellow-400 px-2 py-1 rounded">✏️</button>
+          <button class="eliminar bg-red-500 text-white px-2 py-1 rounded">🗑️</button>
         </td>
       `;
-      tabla.appendChild(fila);
-    });
 
-    document.querySelectorAll(".eliminar").forEach(btn => {
-      btn.addEventListener("click", async (e) => {
-        const i = e.target.dataset.index;
-        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === datosFiltrados[i].fecha_inicial && idx >= i);
-        datos.splice(realIndex, 1);
+      // Añadir eventos de eliminar y editar usando índice real en "datos"
+      // Buscamos el índice absoluto en datos
+      const indexReal = datos.indexOf(data);
+
+      fila.querySelector(".eliminar").addEventListener("click", async () => {
+        if (!confirm("¿Seguro que quieres eliminar esta actividad?")) return;
+        datos.splice(indexReal, 1);
         await guardarDatos();
         renderizarTabla();
       });
-    });
 
-    document.querySelectorAll(".editar").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const i = e.target.dataset.index;
-        const item = datosFiltrados[i];
+      fila.querySelector(".editar").addEventListener("click", () => {
+        const item = datos[indexReal];
         document.getElementById("fechaInicial").value = item.fecha_inicial;
         document.getElementById("fechaFinal").value = item.fecha_final;
         document.getElementById("actividad").value = item.actividad;
         document.getElementById("permisoSandra").value = item.permiso_sandra;
         document.getElementById("viatico").value = item.viatico;
-        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === item.fecha_inicial && idx >= i);
-        datos.splice(realIndex, 1);
+        datos.splice(indexReal, 1); // Quitamos para que al guardar no se duplique
+        renderizarTabla();
       });
+
+      tabla.appendChild(fila);
     });
+
+    if (datosFiltrados.length === 0) {
+      const filaVacia = document.createElement("tr");
+      filaVacia.innerHTML = `<td colspan="6" class="text-center p-4">No hay actividades para este mes</td>`;
+      tabla.appendChild(filaVacia);
+    }
   };
 
   document.getElementById("exportExcel").addEventListener("click", () => {
