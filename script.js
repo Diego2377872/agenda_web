@@ -1,11 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => { 
+document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("actividadForm");
   const tabla = document.querySelector("#tablaActividades tbody");
   const feedback = document.createElement("div");
   form.after(feedback);
-  let datos = [];
 
-  let ordenAscendente = true;
+  const anteriorBtn = document.getElementById("anteriorMes");
+  const siguienteBtn = document.getElementById("siguienteMes");
+  const ordenarFechaBtn = document.getElementById("ordenarFecha");
+
+  let datos = [];
+  let mesActual = new Date().getMonth();
+  let anioActual = new Date().getFullYear();
 
   const cargarDatos = async () => {
     try {
@@ -49,7 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderizarTabla = () => {
     tabla.innerHTML = "";
-    datos.forEach((data, index) => {
+    const datosFiltrados = datos.filter(d => {
+      const fecha = new Date(d.fecha_inicial);
+      return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
+    });
+    datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
         <td class="border px-2 py-1">${data.fecha_inicial}</td>
@@ -68,7 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
-        datos.splice(i, 1);
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === datosFiltrados[i].fecha_inicial && idx >= i);
+        datos.splice(realIndex, 1);
         await guardarDatos();
         renderizarTabla();
       });
@@ -77,37 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".editar").forEach(btn => {
       btn.addEventListener("click", (e) => {
         const i = e.target.dataset.index;
-        const item = datos[i];
+        const item = datosFiltrados[i];
         document.getElementById("fechaInicial").value = item.fecha_inicial;
         document.getElementById("fechaFinal").value = item.fecha_final;
         document.getElementById("actividad").value = item.actividad;
         document.getElementById("permisoSandra").value = item.permiso_sandra;
         document.getElementById("viatico").value = item.viatico;
-        datos.splice(i, 1); // Lo quitamos temporalmente para editar
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === item.fecha_inicial && idx >= i);
+        datos.splice(realIndex, 1);
       });
     });
   };
-
-  // Funcionalidad de orden por fecha inicial
-  document.getElementById("ordenarFechaInicial").addEventListener("click", () => {
-    datos.sort((a, b) => {
-      const fechaA = new Date(a.fecha_inicial);
-      const fechaB = new Date(b.fecha_inicial);
-      return ordenAscendente ? fechaA - fechaB : fechaB - fechaA;
-    });
-    ordenAscendente = !ordenAscendente;
-    actualizarIconoOrden();
-    renderizarTabla();
-  });
-
-  function actualizarIconoOrden() {
-    const icono = document.getElementById("iconoOrdenFecha");
-    if (ordenAscendente) {
-      icono.textContent = "⬆️";
-    } else {
-      icono.textContent = "⬇️";
-    }
-  }
 
   document.getElementById("exportExcel").addEventListener("click", () => {
     const ws = XLSX.utils.json_to_sheet(datos);
@@ -116,9 +106,28 @@ document.addEventListener("DOMContentLoaded", () => {
     XLSX.writeFile(wb, "actividades.xlsx");
   });
 
+  anteriorBtn.addEventListener("click", () => {
+    mesActual--;
+    if (mesActual < 0) {
+      mesActual = 11;
+      anioActual--;
+    }
+    renderizarTabla();
+  });
+
+  siguienteBtn.addEventListener("click", () => {
+    mesActual++;
+    if (mesActual > 11) {
+      mesActual = 0;
+      anioActual++;
+    }
+    renderizarTabla();
+  });
+
+  ordenarFechaBtn.addEventListener("click", () => {
+    datos.sort((a, b) => new Date(a.fecha_inicial) - new Date(b.fecha_inicial));
+    renderizarTabla();
+  });
+
   cargarDatos();
 });
-
-
-
-
