@@ -1,9 +1,11 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { 
   const form = document.getElementById("actividadForm");
   const tabla = document.querySelector("#tablaActividades tbody");
   const feedback = document.createElement("div");
   form.after(feedback);
   let datos = [];
+
+  let ordenAscendente = true;
 
   const cargarDatos = async () => {
     try {
@@ -85,6 +87,27 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
+
+  // Funcionalidad de orden por fecha inicial
+  document.getElementById("ordenarFechaInicial").addEventListener("click", () => {
+    datos.sort((a, b) => {
+      const fechaA = new Date(a.fecha_inicial);
+      const fechaB = new Date(b.fecha_inicial);
+      return ordenAscendente ? fechaA - fechaB : fechaB - fechaA;
+    });
+    ordenAscendente = !ordenAscendente;
+    actualizarIconoOrden();
+    renderizarTabla();
+  });
+
+  function actualizarIconoOrden() {
+    const icono = document.getElementById("iconoOrdenFecha");
+    if (ordenAscendente) {
+      icono.textContent = "⬆️";
+    } else {
+      icono.textContent = "⬇️";
+    }
+  }
 
   document.getElementById("exportExcel").addEventListener("click", () => {
     const ws = XLSX.utils.json_to_sheet(datos);
