@@ -13,16 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let anioActual = new Date().getFullYear();
   let ordenAscendente = true;
 
-  const nombreMes = (mes) => {
-    return [
-      "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-      "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-    ][mes];
-  };
-
-  const actualizarTituloMes = () => {
-    document.getElementById("mesActual").textContent = `${nombreMes(mesActual)} ${anioActual}`;
-  };
+  // Inicializar flatpickr en los inputs de fecha
+  flatpickr("#fechaInicial", { dateFormat: "Y-m-d" });
+  flatpickr("#fechaFinal", { dateFormat: "Y-m-d" });
 
   const cargarDatos = async () => {
     try {
@@ -30,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!response.ok) throw new Error("Error al cargar datos");
       datos = await response.json();
       renderizarTabla();
-      actualizarTituloMes();
     } catch (error) {
       feedback.textContent = "❌ " + error.message;
     }
@@ -61,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     datos.push(nuevaActividad);
     await guardarDatos();
     renderizarTabla();
-    feedback.textContent = "✅ Actividad agregada";
     form.reset();
+    feedback.textContent = "✅ Actividad agregada";
   });
 
   const renderizarTabla = () => {
@@ -71,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const fecha = new Date(d.fecha_inicial);
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
-
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
@@ -80,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <td class="border px-2 py-1">${data.actividad}</td>
         <td class="border px-2 py-1">${data.permiso_sandra}</td>
         <td class="border px-2 py-1">${data.viatico}</td>
-        <td class="border px-2 py-1 space-x-2 text-center">
+        <td class="border px-2 py-1 space-x-2">
           <button class="editar bg-yellow-400 px-2 py-1 rounded" data-index="${index}">✏️</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
@@ -91,8 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
-        // Encuentra índice real dentro de datos originales
-        const realIndex = datos.findIndex(d => d.fecha_inicial === datosFiltrados[i].fecha_inicial && d.fecha_final === datosFiltrados[i].fecha_final && d.actividad === datosFiltrados[i].actividad);
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === datosFiltrados[i].fecha_inicial && idx >= i);
         datos.splice(realIndex, 1);
         await guardarDatos();
         renderizarTabla();
@@ -108,23 +98,17 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("actividad").value = item.actividad;
         document.getElementById("permisoSandra").value = item.permiso_sandra;
         document.getElementById("viatico").value = item.viatico;
-        // Eliminar el ítem para actualizar después
-        const realIndex = datos.findIndex(d => d.fecha_inicial === item.fecha_inicial && d.fecha_final === item.fecha_final && d.actividad === item.actividad);
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === item.fecha_inicial && idx >= i);
         datos.splice(realIndex, 1);
-        guardarDatos();
-        renderizarTabla();
       });
     });
   };
 
-  ordenarFechaBtn.addEventListener("click", () => {
-    datos.sort((a, b) => {
-      const dateA = new Date(a.fecha_inicial);
-      const dateB = new Date(b.fecha_inicial);
-      return ordenAscendente ? dateA - dateB : dateB - dateA;
-    });
-    ordenAscendente = !ordenAscendente;
-    renderizarTabla();
+  document.getElementById("exportExcel").addEventListener("click", () => {
+    const ws = XLSX.utils.json_to_sheet(datos);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
+    XLSX.writeFile(wb, "actividades.xlsx");
   });
 
   anteriorBtn.addEventListener("click", () => {
@@ -134,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
       anioActual--;
     }
     renderizarTabla();
-    actualizarTituloMes();
   });
 
   siguienteBtn.addEventListener("click", () => {
@@ -144,29 +127,17 @@ document.addEventListener("DOMContentLoaded", () => {
       anioActual++;
     }
     renderizarTabla();
-    actualizarTituloMes();
   });
 
-  document.getElementById("exportExcel").addEventListener("click", () => {
-    exportarExcel();
-  });
-
-  const exportarExcel = () => {
-    const wb = XLSX.utils.book_new();
-    const datosFiltrados = datos.filter(d => {
-      const fecha = new Date(d.fecha_inicial);
-      return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
+  ordenarFechaBtn.addEventListener("click", () => {
+    datos.sort((a, b) => {
+      return ordenAscendente
+        ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
+        : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
     });
-
-    const wsData = [
-      ["Fecha Inicial", "Fecha Final", "Actividad", "Permiso Entregado", "Viático"],
-      ...datosFiltrados.map(d => [d.fecha_inicial, d.fecha_final, d.actividad, d.permiso_sandra, d.viatico])
-    ];
-
-    const ws = XLSX.utils.aoa_to_sheet(wsData);
-    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
-    XLSX.writeFile(wb, `Actividades_${nombreMes(mesActual)}_${anioActual}.xlsx`);
-  };
+    ordenAscendente = !ordenAscendente;
+    renderizarTabla();
+  });
 
   cargarDatos();
 });
