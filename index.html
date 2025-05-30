@@ -2,56 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Registro de actividades</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agenda Diego Rodriguez</title>
+  
+  <!-- Ícono favicon tipo agenda -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><rect x=%223%22 y=%224%22 width=%2218%22 height=%2218%22 rx=%222%22 ry=%222%22></rect><line x1=%2216%22 y1=%2212%22 x2=%228%22 y2=%2212%22></line><line x1=%2216%22 y1=%2216%22 x2=%228%22 y2=%2216%22></line><line x1=%2210%22 y1=%228%22 x2=%2210%22 y2=%2210%22></line></svg>" type="image/svg+xml">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
 </head>
 <body class="bg-gray-100 p-6">
-  <div class="max-w-7xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-6">Registro de actividades</h1>
 
-    <form id="actividadForm" class="mb-6 grid grid-cols-1 md:grid-cols-5 gap-4">
-      <input type="text" id="fechaInicial" placeholder="Fecha inicial" class="border rounded p-2" />
-      <input type="text" id="fechaFinal" placeholder="Fecha final" class="border rounded p-2" />
-      <input type="text" id="actividad" placeholder="Actividad" class="border rounded p-2" />
-      <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border rounded p-2" />
-      <input type="text" id="viatico" placeholder="Viático" class="border rounded p-2" />
-      <button type="submit" class="bg-blue-600 text-white rounded px-4 py-2 col-span-1 md:col-span-1">Agregar</button>
+  <div class="max-w-4xl mx-auto bg-white shadow-md rounded p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">📅 Agenda Diego Rodriguez</h1>
+
+    <form id="actividadForm" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+      <input id="fechaInicial" type="date" required class="border p-2 rounded" />
+      <input id="fechaFinal" type="date" required class="border p-2 rounded" />
+      <input id="actividad" type="text" placeholder="Actividad" required class="border p-2 rounded" />
+      <input id="permisoSandra" type="text" placeholder="Permiso Sandra" class="border p-2 rounded" />
+      <select id="viatico" class="border p-2 rounded" required>
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="sí">Sí</option>
+        <option value="no">No</option>
+      </select>
+      <button type="submit" class="col-span-full md:col-span-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        ➕ Agregar
+      </button>
     </form>
 
-    <div class="flex justify-between items-center mb-4">
-      <div>
-        <button id="anteriorMes" class="bg-gray-300 px-3 py-1 rounded mr-2 hover:bg-gray-400">← Mes anterior</button>
-        <button id="siguienteMes" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Mes siguiente →</button>
-      </div>
-      <button id="ordenarFecha" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ordenar por fecha</button>
-      <button id="exportExcel" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Exportar Excel</button>
+    <div class="flex justify-end mb-2">
+      <button id="exportExcel" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        📤 Exportar a Excel
+      </button>
     </div>
 
     <div class="overflow-x-auto">
-      <table id="tablaActividades" class="min-w-full border-collapse border border-gray-300">
-        <thead class="bg-gray-200">
+      <table id="tablaActividades" class="min-w-full bg-white border border-gray-300 text-sm text-left rounded">
+        <thead class="bg-gray-100">
           <tr>
-            <th class="border border-gray-300 px-4 py-2">Fecha inicial</th>
-            <th class="border border-gray-300 px-4 py-2">Fecha final</th>
-            <th class="border border-gray-300 px-4 py-2">Actividad</th>
-            <th class="border border-gray-300 px-4 py-2">Permiso Sandra</th>
-            <th class="border border-gray-300 px-4 py-2">Viático</th>
-            <th class="border border-gray-300 px-4 py-2">Acciones</th>
+            <th class="px-4 py-2 border cursor-pointer select-none" id="ordenarFechaInicial">
+              Fecha Inicial <span id="iconoOrdenFecha">⬍</span>
+            </th>
+            <th class="px-4 py-2 border">Fecha Final</th>
+            <th class="px-4 py-2 border">Actividad</th>
+            <th class="px-4 py-2 border">Permiso Sandra</th>
+            <th class="px-4 py-2 border">Viático</th>
+            <th class="px-4 py-2 border">Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <!-- Aquí se renderizan las filas -->
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
+
+    <footer class="mt-6 text-center text-gray-600">
+      <p>© 2025 Elaborado por Diego Rodriguez</p>
+    </footer>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
 
