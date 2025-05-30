@@ -5,5 +5,12 @@
     "actividad": "Hiii",
     "permiso_sandra": "No",
     "viatico": "no"
+  },
+  {
+    "fecha_inicial": "2025-05-04",
+    "fecha_final": "2025-05-04",
+    "actividad": "Rrr",
+    "permiso_sandra": "",
+    "viatico": "no"
   }
 ]
