@@ -3,74 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agenda Diego Rodriguez 📅</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Registro de actividades</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet"/>
 </head>
 <body class="bg-gray-100 p-6">
-
   <div class="max-w-7xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-2">
-      <span>📅</span> Agenda Diego Rodriguez
-    </h1>
+    <h1 class="text-2xl font-bold mb-6">Registro de actividades</h1>
 
-    <form id="actividadForm" class="mb-4 grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
-      <div>
-        <label for="fechaInicial" class="block font-medium">Fecha Inicial</label>
-        <input type="date" id="fechaInicial" required class="border rounded px-2 py-1 w-full" />
-      </div>
-      <div>
-        <label for="fechaFinal" class="block font-medium">Fecha Final</label>
-        <input type="date" id="fechaFinal" required class="border rounded px-2 py-1 w-full" />
-      </div>
-      <div>
-        <label for="actividad" class="block font-medium">Actividad</label>
-        <input type="text" id="actividad" required class="border rounded px-2 py-1 w-full" />
-      </div>
-      <div>
-        <label for="permisoSandra" class="block font-medium">Permiso Entregado</label>
-        <input type="text" id="permisoSandra" class="border rounded px-2 py-1 w-full" />
-      </div>
-      <div>
-        <label for="viatico" class="block font-medium">Viático</label>
-        <input type="text" id="viatico" class="border rounded px-2 py-1 w-full" />
-      </div>
-      <div>
-        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 w-full">Agregar</button>
-      </div>
+    <form id="actividadForm" class="mb-6 grid grid-cols-1 md:grid-cols-5 gap-4">
+      <input type="text" id="fechaInicial" placeholder="Fecha inicial" class="border rounded p-2" />
+      <input type="text" id="fechaFinal" placeholder="Fecha final" class="border rounded p-2" />
+      <input type="text" id="actividad" placeholder="Actividad" class="border rounded p-2" />
+      <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border rounded p-2" />
+      <input type="text" id="viatico" placeholder="Viático" class="border rounded p-2" />
+      <button type="submit" class="bg-blue-600 text-white rounded px-4 py-2 col-span-1 md:col-span-1">Agregar</button>
     </form>
 
     <div class="flex justify-between items-center mb-4">
-      <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">← Mes Anterior</button>
-      <button id="ordenarFecha" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">Ordenar Fecha ⬆️⬇️</button>
-      <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente →</button>
+      <div>
+        <button id="anteriorMes" class="bg-gray-300 px-3 py-1 rounded mr-2 hover:bg-gray-400">← Mes anterior</button>
+        <button id="siguienteMes" class="bg-gray-300 px-3 py-1 rounded hover:bg-gray-400">Mes siguiente →</button>
+      </div>
+      <button id="ordenarFecha" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Ordenar por fecha</button>
+      <button id="exportExcel" class="bg-purple-600 text-white px-3 py-1 rounded hover:bg-purple-700">Exportar Excel</button>
     </div>
 
-    <!-- Aquí agregamos el título dinámico del mes y año -->
-    <div id="mesActual" class="text-xl font-semibold text-center my-2 text-indigo-600"></div>
-
     <div class="overflow-x-auto">
-      <table id="tablaActividades" class="min-w-full border-collapse border border-gray-300 text-sm">
-        <thead class="bg-indigo-100">
+      <table id="tablaActividades" class="min-w-full border-collapse border border-gray-300">
+        <thead class="bg-gray-200">
           <tr>
-            <th class="border border-gray-300 px-2 py-1 text-left">Fecha Inicial</th>
-            <th class="border border-gray-300 px-2 py-1 text-left">Fecha Final</th>
-            <th class="border border-gray-300 px-2 py-1 text-left">Actividad</th>
-            <th class="border border-gray-300 px-2 py-1 text-left">Permiso Entregado</th>
-            <th class="border border-gray-300 px-2 py-1 text-left">Viático</th>
-            <th class="border border-gray-300 px-2 py-1 text-center">Acciones</th>
+            <th class="border border-gray-300 px-4 py-2">Fecha inicial</th>
+            <th class="border border-gray-300 px-4 py-2">Fecha final</th>
+            <th class="border border-gray-300 px-4 py-2">Actividad</th>
+            <th class="border border-gray-300 px-4 py-2">Permiso Sandra</th>
+            <th class="border border-gray-300 px-4 py-2">Viático</th>
+            <th class="border border-gray-300 px-4 py-2">Acciones</th>
           </tr>
         </thead>
-        <tbody class="bg-white">
-          <!-- Filas generadas por JS -->
+        <tbody>
+          <!-- Aquí se renderizan las filas -->
         </tbody>
       </table>
     </div>
-
-    <button id="exportExcel" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Exportar a Excel</button>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
+
 
