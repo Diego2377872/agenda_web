@@ -2,49 +2,75 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registro de Actividades</title>
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
-  <script defer src="script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda Diego Rodriguez 📅</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-4">
-  <div class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">Registro de Actividades</h1>
-    <form id="actividadForm" class="grid md:grid-cols-2 gap-4 mb-4">
-      <input type="date" id="fechaInicial" class="border p-2 rounded" required>
-      <input type="date" id="fechaFinal" class="border p-2 rounded" required>
-      <input type="text" id="actividad" placeholder="Actividad" class="border p-2 rounded" required>
-      <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border p-2 rounded">
-      <input type="text" id="viatico" placeholder="Viático" class="border p-2 rounded">
-      <button type="submit" class="bg-blue-500 text-white rounded p-2 col-span-full">Agregar Actividad</button>
+<body class="bg-gray-100 p-6">
+
+  <div class="max-w-7xl mx-auto bg-white p-6 rounded shadow">
+    <h1 class="text-3xl font-bold text-indigo-700 mb-6 flex items-center gap-2">
+      <span>📅</span> Agenda Diego Rodriguez
+    </h1>
+
+    <form id="actividadForm" class="mb-4 grid grid-cols-1 md:grid-cols-6 gap-4 items-end">
+      <div>
+        <label for="fechaInicial" class="block font-medium">Fecha Inicial</label>
+        <input type="date" id="fechaInicial" required class="border rounded px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label for="fechaFinal" class="block font-medium">Fecha Final</label>
+        <input type="date" id="fechaFinal" required class="border rounded px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label for="actividad" class="block font-medium">Actividad</label>
+        <input type="text" id="actividad" required class="border rounded px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label for="permisoSandra" class="block font-medium">Permiso Entregado</label>
+        <input type="text" id="permisoSandra" class="border rounded px-2 py-1 w-full" />
+      </div>
+      <div>
+        <label for="viatico" class="block font-medium">Viático</label>
+        <input type="text" id="viatico" class="border rounded px-2 py-1 w-full" />
+      </div>
+      <div>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 w-full">Agregar</button>
+      </div>
     </form>
 
-    <div class="flex flex-wrap gap-2 mb-4 justify-between items-center">
-      <div class="space-x-2">
-        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">⬅️ Mes Anterior</button>
-        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente ➡️</button>
-        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded">Ordenar por Fecha</button>
-      </div>
-      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded">📤 Exportar Excel</button>
+    <div class="flex justify-between items-center mb-4">
+      <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">← Mes Anterior</button>
+      <button id="ordenarFecha" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded">Ordenar Fecha ⬆️⬇️</button>
+      <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente →</button>
     </div>
 
+    <!-- Aquí agregamos el título dinámico del mes y año -->
+    <div id="mesActual" class="text-xl font-semibold text-center my-2 text-indigo-600"></div>
+
     <div class="overflow-x-auto">
-      <table class="table-auto w-full border border-collapse" id="tablaActividades">
-        <thead class="bg-gray-200">
+      <table id="tablaActividades" class="min-w-full border-collapse border border-gray-300 text-sm">
+        <thead class="bg-indigo-100">
           <tr>
-            <th class="border px-2 py-1">Fecha Inicial</th>
-            <th class="border px-2 py-1">Fecha Final</th>
-            <th class="border px-2 py-1">Actividad</th>
-            <th class="border px-2 py-1">Permiso Sandra</th>
-            <th class="border px-2 py-1">Viático</th>
-            <th class="border px-2 py-1">Acciones</th>
+            <th class="border border-gray-300 px-2 py-1 text-left">Fecha Inicial</th>
+            <th class="border border-gray-300 px-2 py-1 text-left">Fecha Final</th>
+            <th class="border border-gray-300 px-2 py-1 text-left">Actividad</th>
+            <th class="border border-gray-300 px-2 py-1 text-left">Permiso Entregado</th>
+            <th class="border border-gray-300 px-2 py-1 text-left">Viático</th>
+            <th class="border border-gray-300 px-2 py-1 text-center">Acciones</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody class="bg-white">
+          <!-- Filas generadas por JS -->
+        </tbody>
       </table>
     </div>
+
+    <button id="exportExcel" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Exportar a Excel</button>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
 
