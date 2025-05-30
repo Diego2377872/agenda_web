@@ -4,61 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Actividades</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body class="bg-gray-100 p-6">
-
-  <div class="max-w-4xl mx-auto bg-white shadow-md rounded p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">📋 Registro de Actividades</h1>
-
-    <form id="actividadForm" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-      <input id="fechaInicial" type="date" required class="border p-2 rounded" />
-      <input id="fechaFinal" type="date" required class="border p-2 rounded" />
-      <input id="actividad" type="text" placeholder="Actividad" required class="border p-2 rounded" />
-      <input id="permisoSandra" type="text" placeholder="Permiso Sandra" class="border p-2 rounded" />
-      <select id="viatico" class="border p-2 rounded" required>
-        <option value="" disabled selected>Seleccionar</option>
-        <option value="sí">Sí</option>
-        <option value="no">No</option>
-      </select>
-      <button type="submit" class="col-span-full md:col-span-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        ➕ Agregar
-      </button>
+<body class="bg-gray-100 p-4">
+  <div class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-6">
+    <h1 class="text-2xl font-bold mb-4 text-center">Registro de Actividades</h1>
+    <form id="actividadForm" class="grid md:grid-cols-2 gap-4 mb-4">
+      <input type="date" id="fechaInicial" class="border p-2 rounded" required>
+      <input type="date" id="fechaFinal" class="border p-2 rounded" required>
+      <input type="text" id="actividad" placeholder="Actividad" class="border p-2 rounded" required>
+      <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border p-2 rounded">
+      <input type="text" id="viatico" placeholder="Viático" class="border p-2 rounded">
+      <button type="submit" class="bg-blue-500 text-white rounded p-2 col-span-full">Agregar Actividad</button>
     </form>
 
-    <div class="flex justify-end mb-2">
-      <button id="exportExcel" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-        📤 Exportar a Excel
-      </button>
+    <div class="flex flex-wrap gap-2 mb-4 justify-between items-center">
+      <div class="space-x-2">
+        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">⬅️ Mes Anterior</button>
+        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente ➡️</button>
+        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded">Ordenar por Fecha</button>
+      </div>
+      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded">📤 Exportar Excel</button>
     </div>
 
     <div class="overflow-x-auto">
-      <table id="tablaActividades" class="min-w-full bg-white border border-gray-300 text-sm text-left rounded">
-        <thead class="bg-gray-100">
+      <table class="table-auto w-full border border-collapse" id="tablaActividades">
+        <thead class="bg-gray-200">
           <tr>
-            <th class="px-4 py-2 border cursor-pointer select-none" id="ordenarFechaInicial">
-              Fecha Inicial <span id="iconoOrdenFecha">⬍</span>
-            </th>
-            <th class="px-4 py-2 border">Fecha Final</th>
-            <th class="px-4 py-2 border">Actividad</th>
-            <th class="px-4 py-2 border">Permiso Sandra</th>
-            <th class="px-4 py-2 border">Viático</th>
-            <th class="px-4 py-2 border">Acciones</th>
+            <th class="border px-2 py-1">Fecha Inicial</th>
+            <th class="border px-2 py-1">Fecha Final</th>
+            <th class="border px-2 py-1">Actividad</th>
+            <th class="border px-2 py-1">Permiso Sandra</th>
+            <th class="border px-2 py-1">Viático</th>
+            <th class="border px-2 py-1">Acciones</th>
           </tr>
         </thead>
         <tbody></tbody>
       </table>
     </div>
-
-    <footer class="mt-6 text-center text-gray-600">
-      <p>© 2025 Elaborado por Diego Rodriguez</p>
-    </footer>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
-
-
-
