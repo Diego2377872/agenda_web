@@ -40,5 +40,12 @@
     "actividad": "Park",
     "permiso_sandra": "No",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-02",
+    "fecha_final": "2025-07-03",
+    "actividad": "Opera ",
+    "permiso_sandra": "No",
+    "viatico": "No"
   }
 ]
