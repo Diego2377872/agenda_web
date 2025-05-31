@@ -35,6 +35,13 @@
     "viatico": ""
   },
   {
+    "fecha_inicial": "2025-05-07",
+    "fecha_final": "2025-05-07",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-05-09",
     "fecha_final": "2025-05-09",
     "actividad": "DGP",
@@ -56,8 +63,8 @@
     "viatico": "SI"
   },
   {
-    "fecha_inicial": "2025-05-07",
-    "fecha_final": "2025-05-07",
+    "fecha_inicial": "2025-05-08",
+    "fecha_final": "2025-05-08",
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
