@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registro de Actividades</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
   <script defer src="script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -26,11 +27,11 @@
     }
 
     .table-auto tr:hover {
-      background-color: #e0e7ff; /* Color suave al pasar el ratón */
+      background-color: #e0e7ff;
     }
 
     .table-auto tr:nth-child(even) {
-      background-color: #f9f9f9; /* Color alterno */
+      background-color: #f9f9f9;
     }
 
     .table-auto tr:first-child th {
@@ -61,11 +62,19 @@
 
     <div class="flex flex-wrap gap-2 mb-4 justify-between items-center">
       <div class="space-x-2">
-        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes anterior">⬅️ Mes Anterior</button>
-        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes siguiente">Mes Siguiente ➡️</button>
-        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded" aria-label="Ordenar por fecha">Ordenar por Fecha</button>
+        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes anterior">
+          <i class="fas fa-chevron-left"></i> Mes Anterior
+        </button>
+        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes siguiente">
+          Mes Siguiente <i class="fas fa-chevron-right"></i>
+        </button>
+        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded" aria-label="Ordenar por fecha">
+          <i class="fas fa-sort"></i> Ordenar por Fecha
+        </button>
       </div>
-      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded" aria-label="Exportar a Excel">📤 Exportar Excel</button>
+      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded" aria-label="Exportar a Excel">
+        <i class="fas fa-file-excel"></i> Exportar Excel
+      </button>
     </div>
 
     <div class="overflow-x-auto">
