@@ -75,5 +75,12 @@
     "actividad": "Permiso ",
     "permiso_sandra": "Entregado ",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-01",
+    "fecha_final": "2025-05-01",
+    "actividad": "Feriado",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
