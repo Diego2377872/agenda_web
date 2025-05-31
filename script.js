@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const feedback = document.createElement("div");
   form.after(feedback);
 
+  const guardarDatosBtn = document.getElementById("guardarDatos");
   const anteriorBtn = document.getElementById("anteriorMes");
   const siguienteBtn = document.getElementById("siguienteMes");
   const ordenarFechaBtn = document.getElementById("ordenarFecha");
-  const guardarDatosBtn = document.getElementById("guardarDatos");
 
   let datos = [];
   let mesActual = new Date().getMonth();
@@ -60,14 +60,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const fecha = new Date(d.fecha_inicial);
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
+
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_inicial')">${data.fecha_inicial}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_final')">${data.fecha_final}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'actividad')">${data.actividad}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'permiso_sandra')">${data.permiso_sandra}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'viatico')">${data.viatico}</td>
+        <td class="border px-2 py-1" data-field="fecha_inicial" data-index="${index}">${data.fecha_inicial}</td>
+        <td class="border px-2 py-1" data-field="fecha_final" data-index="${index}">${data.fecha_final}</td>
+        <td class="border px-2 py-1" data-field="actividad" data-index="${index}">${data.actividad}</td>
+        <td class="border px-2 py-1" data-field="permiso_sandra" data-index="${index}">${data.permiso_sandra}</td>
+        <td class="border px-2 py-1" data-field="viatico" data-index="${index}">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
@@ -75,37 +76,49 @@ document.addEventListener("DOMContentLoaded", () => {
       tabla.appendChild(fila);
     });
 
+    // Evento de eliminación
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
-        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === datosFiltrados[i].fecha_inicial && idx >= i);
-        datos.splice(realIndex, 1);
+        datos.splice(i, 1);
         await guardarDatos();
         renderizarTabla();
       });
     });
-  };
 
-  const hacerCeldaEditable = (td, index, field) => {
-    const valorOriginal = td.textContent;
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = valorOriginal;
+    // Evento de edición inline
+    document.querySelectorAll("#tablaActividades td[data-field]").forEach(td => {
+      td.addEventListener("click", () => {
+        const field = td.getAttribute("data-field");
+        const index = td.getAttribute("data-index");
+        const valorOriginal = td.textContent;
 
-    td.innerHTML = "";
-    td.appendChild(input);
-    input.focus();
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = valorOriginal;
+        input.className = "w-full border rounded px-1";
 
-    input.addEventListener("blur", () => {
-      td.textContent = input.value || valorOriginal;
-      datos[index][field] = td.textContent;
-    });
+        td.textContent = "";
+        td.appendChild(input);
+        input.focus();
 
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        td.textContent = input.value || valorOriginal;
-        datos[index][field] = td.textContent;
-      }
+        const guardarCambio = () => {
+          const nuevoValor = input.value.trim();
+          if (nuevoValor !== "") {
+            datos[index][field] = nuevoValor;
+            td.textContent = nuevoValor;
+          } else {
+            td.textContent = valorOriginal;
+          }
+        };
+
+        input.addEventListener("blur", guardarCambio);
+        input.addEventListener("keypress", e => {
+          if (e.key === "Enter") {
+            guardarCambio();
+          }
+        });
+      });
     });
   };
 
@@ -151,3 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cargarDatos();
 });
+
