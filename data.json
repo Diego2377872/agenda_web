@@ -40,5 +40,12 @@
     "actividad": "MADE",
     "permiso_sandra": "Entregado ",
     "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-07-14",
+    "fecha_final": "2025-07-15",
+    "actividad": "DGP",
+    "permiso_sandra": "No",
+    "viatico": "SI"
   }
 ]
