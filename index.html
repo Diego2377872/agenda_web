@@ -8,6 +8,7 @@
   <script defer src="script.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    /* CSS Mejorado */
     .table-auto {
       border-collapse: collapse;
       width: 100%;
@@ -25,11 +26,11 @@
     }
 
     .table-auto tr:hover {
-      background-color: #e0e7ff;
+      background-color: #e0e7ff; /* Color suave al pasar el ratón */
     }
 
     .table-auto tr:nth-child(even) {
-      background-color: #f9f9f9;
+      background-color: #f9f9f9; /* Color alterno */
     }
 
     .table-auto tr:first-child th {
@@ -60,12 +61,11 @@
 
     <div class="flex flex-wrap gap-2 mb-4 justify-between items-center">
       <div class="space-x-2">
-        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">⬅️ Mes Anterior</button>
-        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente ➡️</button>
-        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded">Ordenar por Fecha</button>
+        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes anterior">⬅️ Mes Anterior</button>
+        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded" aria-label="Mes siguiente">Mes Siguiente ➡️</button>
+        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded" aria-label="Ordenar por fecha">Ordenar por Fecha</button>
       </div>
-      <button id="guardarDatos" class="bg-blue-500 text-white px-3 py-1 rounded">💾 Guardar Datos</button>
-      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded">📤 Exportar Excel</button>
+      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded" aria-label="Exportar a Excel">📤 Exportar Excel</button>
     </div>
 
     <div class="overflow-x-auto">
