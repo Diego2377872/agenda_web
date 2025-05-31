@@ -7,13 +7,6 @@
     "viatico": "No"
   },
   {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADES",
-    "permiso_sandra": "Entregado ",
-    "viatico": "SI"
-  },
-  {
     "fecha_inicial": "2025-05-02",
     "fecha_final": "2025-05-02",
     "actividad": "Permiso ",
@@ -38,6 +31,13 @@
     "fecha_inicial": "2025-05-20",
     "fecha_final": "2025-05-21",
     "actividad": "CAPECO ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MADE",
     "permiso_sandra": "Entregado ",
     "viatico": "SI"
   }
