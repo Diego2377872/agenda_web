@@ -7,13 +7,6 @@
     "viatico": "No"
   },
   {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado",
-    "viatico": "NO"
-  },
-  {
     "fecha_inicial": "2025-03-01",
     "fecha_final": "2025-05-02",
     "actividad": "Reunion DEAG",
@@ -47,5 +40,12 @@
     "actividad": "MADES",
     "permiso_sandra": "Entregado ",
     "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado",
+    "viatico": "No"
   }
 ]
