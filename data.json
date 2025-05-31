@@ -14,13 +14,6 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
     "fecha_inicial": "2025-05-05",
     "fecha_final": "2025-05-05",
     "actividad": "Oficina R.E",
@@ -89,5 +82,12 @@
     "actividad": "Feriado",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregad",
+    "viatico": "No"
   }
 ]
