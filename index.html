@@ -2,87 +2,44 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registro de Actividades</title>
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
   <script defer src="script.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    .table-auto {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    .table-auto th, .table-auto td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-    }
-
-    .table-auto th {
-      background-color: #f2f2f2;
-      font-weight: bold;
-    }
-
-    .table-auto tr:hover {
-      background-color: #e0e7ff;
-    }
-
-    .table-auto tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    .table-auto tr:first-child th {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"/>
 </head>
 <body class="bg-gray-100 p-4">
-  <div class="max-w-6xl mx-auto bg-white shadow-md rounded-lg p-6">
-    <h1 class="text-2xl font-bold mb-4 text-center">
-      <span class="mr-2">📖</span>Agenda Diego Rodriguez
-    </h1>
-    <form id="actividadForm" class="grid md:grid-cols-2 gap-4 mb-4">
-      <label for="fechaInicial" class="hidden">Fecha Inicial</label>
-      <input type="date" id="fechaInicial" class="border p-2 rounded" required>
-      <label for="fechaFinal" class="hidden">Fecha Final</label>
-      <input type="date" id="fechaFinal" class="border p-2 rounded" required>
-      <label for="actividad" class="hidden">Actividad</label>
-      <input type="text" id="actividad" placeholder="Actividad" class="border p-2 rounded" required>
-      <label for="permisoSandra" class="hidden">Permiso Sandra</label>
-      <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border p-2 rounded">
-      <label for="viatico" class="hidden">Viático</label>
-      <input type="text" id="viatico" placeholder="Viático" class="border p-2 rounded">
-      <button type="submit" class="bg-blue-500 text-white rounded p-2 col-span-full">Agregar Actividad</button>
-    </form>
+  <h1 class="text-2xl font-bold mb-4">Registro de Actividades</h1>
 
-    <div class="flex flex-wrap gap-2 mb-4 justify-between items-center">
-      <div class="space-x-2">
-        <button id="anteriorMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">⬅️ Mes Anterior</button>
-        <button id="siguienteMes" class="bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded">Mes Siguiente ➡️</button>
-        <button id="ordenarFecha" class="bg-purple-500 text-white px-3 py-1 rounded">Ordenar por Fecha</button>
-      </div>
-      <button id="guardarDatos" class="bg-blue-500 text-white px-3 py-1 rounded">💾 Guardar Datos</button>
-      <button id="exportExcel" class="bg-green-500 text-white px-3 py-1 rounded">📤 Exportar Excel</button>
-    </div>
+  <form id="actividadForm" class="space-y-2 mb-4">
+    <input type="date" id="fechaInicial" class="border p-1 rounded" required />
+    <input type="date" id="fechaFinal" class="border p-1 rounded" required />
+    <input type="text" id="actividad" placeholder="Actividad" class="border p-1 rounded" required />
+    <input type="text" id="permisoSandra" placeholder="Permiso Sandra" class="border p-1 rounded" />
+    <input type="text" id="viatico" placeholder="Viático" class="border p-1 rounded" />
+    <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded">Agregar</button>
+  </form>
 
-    <div class="overflow-x-auto">
-      <table class="table-auto" id="tablaActividades">
-        <thead class="bg-gray-200">
-          <tr>
-            <th class="border px-2 py-1">Fecha Inicial</th>
-            <th class="border px-2 py-1">Fecha Final</th>
-            <th class="border px-2 py-1">Actividad</th>
-            <th class="border px-2 py-1">Permiso Sandra</th>
-            <th class="border px-2 py-1">Viático</th>
-            <th class="border px-2 py-1">Acciones</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+  <div class="space-x-2 mb-2">
+    <button id="anteriorMes" class="bg-gray-300 px-2 py-1 rounded">← Mes anterior</button>
+    <button id="siguienteMes" class="bg-gray-300 px-2 py-1 rounded">Mes siguiente →</button>
+    <button id="ordenarFecha" class="bg-yellow-400 px-2 py-1 rounded">Ordenar por fecha</button>
+    <button id="guardarDatos" class="bg-green-500 text-white px-2 py-1 rounded">Guardar cambios</button>
+    <button id="exportExcel" class="bg-purple-600 text-white px-2 py-1 rounded">📁 Exportar Excel</button>
   </div>
+
+  <table id="tablaActividades" class="w-full table-auto bg-white shadow-md">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="border px-2 py-1">Fecha inicial</th>
+        <th class="border px-2 py-1">Fecha final</th>
+        <th class="border px-2 py-1">Actividad</th>
+        <th class="border px-2 py-1">Permiso Sandra</th>
+        <th class="border px-2 py-1">Viático</th>
+        <th class="border px-2 py-1">Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </body>
 </html>
