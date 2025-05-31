@@ -68,5 +68,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-09",
+    "fecha_final": "2025-05-09",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
   }
 ]
