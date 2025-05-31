@@ -60,15 +60,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const fecha = new Date(d.fecha_inicial);
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
+
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_inicial')">${data.fecha_inicial}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_final')">${data.fecha_final}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'actividad')">${data.actividad}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'permiso_sandra')">${data.permiso_sandra}</td>
-        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'viatico')">${data.viatico}</td>
+        <td class="border px-2 py-1">${data.fecha_inicial}</td>
+        <td class="border px-2 py-1">${data.fecha_final}</td>
+        <td class="border px-2 py-1">${data.actividad}</td>
+        <td class="border px-2 py-1">${data.permiso_sandra}</td>
+        <td class="border px-2 py-1">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
+          <button class="editar bg-yellow-400 text-white px-2 py-1 rounded" data-index="${index}">✏️</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
       `;
@@ -84,28 +86,44 @@ document.addEventListener("DOMContentLoaded", () => {
         renderizarTabla();
       });
     });
-  };
 
-  const hacerCeldaEditable = (td, index, field) => {
-    const valorOriginal = td.textContent;
-    const input = document.createElement("input");
-    input.type = "text";
-    input.value = valorOriginal;
+    document.querySelectorAll(".editar").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const i = e.target.dataset.index;
+        const fila = tabla.children[i];
+        const campos = ['fecha_inicial', 'fecha_final', 'actividad', 'permiso_sandra', 'viatico'];
 
-    td.innerHTML = "";
-    td.appendChild(input);
-    input.focus();
+        campos.forEach((campo, j) => {
+          const td = fila.children[j];
+          const input = document.createElement("input");
+          input.type = campo.includes("fecha") ? "date" : "text";
+          input.value = datos[i][campo];
+          td.innerHTML = "";
+          td.appendChild(input);
+        });
 
-    input.addEventListener("blur", () => {
-      td.textContent = input.value || valorOriginal;
-      datos[index][field] = td.textContent;
-    });
+        const accionesTd = fila.children[5];
+        accionesTd.innerHTML = `
+          <button class="guardar bg-green-500 text-white px-2 py-1 rounded" data-index="${i}">💾</button>
+          <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${i}">🗑️</button>
+        `;
 
-    input.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        td.textContent = input.value || valorOriginal;
-        datos[index][field] = td.textContent;
-      }
+        accionesTd.querySelector(".guardar").addEventListener("click", async () => {
+          campos.forEach((campo, j) => {
+            const input = fila.children[j].querySelector("input");
+            datos[i][campo] = input.value;
+          });
+          await guardarDatos();
+          renderizarTabla();
+        });
+
+        accionesTd.querySelector(".eliminar").addEventListener("click", async (e) => {
+          const idx = e.target.dataset.index;
+          datos.splice(idx, 1);
+          await guardarDatos();
+          renderizarTabla();
+        });
+      });
     });
   };
 
