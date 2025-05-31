@@ -35,17 +35,17 @@
     "viatico": "SI"
   },
   {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADE",
-    "permiso_sandra": "Entregado ",
-    "viatico": "SI"
-  },
-  {
     "fecha_inicial": "2025-07-14",
     "fecha_final": "2025-07-15",
     "actividad": "DGP",
     "permiso_sandra": "NO",
+    "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MADES",
+    "permiso_sandra": "Entregado ",
     "viatico": "SI"
   }
 ]
