@@ -69,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
         <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'permiso_sandra')">${data.permiso_sandra}</td>
         <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'viatico')">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
-          <button class="editar bg-yellow-400 text-white px-2 py-1 rounded" onclick="hacerCeldaEditable(this.parentElement.parentElement.querySelectorAll('td')[0], ${index}, 'fecha_inicial')">✏️</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
       `;
@@ -151,4 +150,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   cargarDatos();
-});;
+});
