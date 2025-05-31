@@ -1,110 +1,5 @@
 [
   {
-    "fecha_inicial": "2025-07-14",
-    "fecha_final": "2025-07-15",
-    "actividad": "DGP",
-    "permiso_sandra": "NO",
-    "viatico": "SI"
-  },
-  {
-    "fecha_inicial": "2025-06-06",
-    "fecha_final": "2025-06-11",
-    "actividad": "Reunion DEAG",
-    "permiso_sandra": "No",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-06-01",
-    "fecha_final": "2025-06-01",
-    "actividad": "Ok",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-30",
-    "fecha_final": "2025-05-30",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-27",
-    "fecha_final": "2025-05-29",
-    "actividad": "Reunión AEP y Japoneses",
-    "permiso_sandra": "No",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-20",
-    "fecha_final": "2025-05-21",
-    "actividad": "CAPECO",
-    "permiso_sandra": "Si",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-16",
-    "fecha_final": "2025-05-16",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADES, Reunión con el Dr Kohli Tema Tesis",
-    "permiso_sandra": "Si",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-09",
-    "fecha_final": "2025-05-09",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-05-08",
-    "fecha_final": "2025-05-08",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-07",
-    "fecha_final": "2025-05-07",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-06",
-    "fecha_final": "2025-05-06",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-05",
-    "fecha_final": "2025-05-05",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-05-01",
-    "fecha_final": "2025-05-01",
-    "actividad": "Feriado",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
     "fecha_inicial": "2025-03-01",
     "fecha_final": "2025-05-02",
     "actividad": "Reunion DEAG",
@@ -117,5 +12,117 @@
     "actividad": "MINISTERIO DEL AMBIENT",
     "permiso_sandra": "Entregado",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-01",
+    "fecha_final": "2025-05-01",
+    "actividad": "Feriado",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-05",
+    "fecha_final": "2025-05-05",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-06",
+    "fecha_final": "2025-05-06",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-07",
+    "fecha_final": "2025-05-07",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-08",
+    "fecha_final": "2025-05-08",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-09",
+    "fecha_final": "2025-05-09",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MADES, Reunión con el Dr Kohli Tema Tesis",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-16",
+    "fecha_final": "2025-05-16",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-20",
+    "fecha_final": "2025-05-21",
+    "actividad": "CAPECO",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-27",
+    "fecha_final": "2025-05-29",
+    "actividad": "Reunión AEP y Japoneses",
+    "permiso_sandra": "No",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-30",
+    "fecha_final": "2025-05-30",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-01",
+    "fecha_final": "2025-06-01",
+    "actividad": "Ok",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-06",
+    "fecha_final": "2025-06-11",
+    "actividad": "Reunion DEAG",
+    "permiso_sandra": "No",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-14",
+    "fecha_final": "2025-07-15",
+    "actividad": "DGP",
+    "permiso_sandra": "NO",
+    "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-06-24",
+    "fecha_final": "2025-05-24",
+    "actividad": "Feriado ",
+    "permiso_sandra": "No ",
+    "viatico": "No "
   }
 ]
