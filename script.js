@@ -7,11 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const anteriorBtn = document.getElementById("anteriorMes");
   const siguienteBtn = document.getElementById("siguienteMes");
   const ordenarFechaBtn = document.getElementById("ordenarFecha");
+  const guardarDatosBtn = document.getElementById("guardarDatos");
 
   let datos = [];
   let mesActual = new Date().getMonth();
   let anioActual = new Date().getFullYear();
-  let ordenAscendente = true; // Controla el orden
+  let ordenAscendente = true;
 
   const cargarDatos = async () => {
     try {
@@ -62,13 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td class="border px-2 py-1">${data.fecha_inicial}</td>
-        <td class="border px-2 py-1">${data.fecha_final}</td>
-        <td class="border px-2 py-1">${data.actividad}</td>
-        <td class="border px-2 py-1">${data.permiso_sandra}</td>
-        <td class="border px-2 py-1">${data.viatico}</td>
+        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_inicial')">${data.fecha_inicial}</td>
+        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'fecha_final')">${data.fecha_final}</td>
+        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'actividad')">${data.actividad}</td>
+        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'permiso_sandra')">${data.permiso_sandra}</td>
+        <td class="border px-2 py-1" onclick="hacerCeldaEditable(this, ${index}, 'viatico')">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
-          <button class="editar bg-yellow-400 px-2 py-1 rounded" data-index="${index}">✏️</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
       `;
@@ -84,27 +84,34 @@ document.addEventListener("DOMContentLoaded", () => {
         renderizarTabla();
       });
     });
+  };
 
-    document.querySelectorAll(".editar").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const i = e.target.dataset.index;
-        const item = datosFiltrados[i];
-        document.getElementById("fechaInicial").value = item.fecha_inicial;
-        document.getElementById("fechaFinal").value = item.fecha_final;
-        document.getElementById("actividad").value = item.actividad;
-        document.getElementById("permisoSandra").value = item.permiso_sandra;
-        document.getElementById("viatico").value = item.viatico;
-        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === item.fecha_inicial && idx >= i);
-        datos.splice(realIndex, 1);
-      });
+  const hacerCeldaEditable = (td, index, field) => {
+    const valorOriginal = td.textContent;
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = valorOriginal;
+
+    td.innerHTML = "";
+    td.appendChild(input);
+    input.focus();
+
+    input.addEventListener("blur", () => {
+      td.textContent = input.value || valorOriginal;
+      datos[index][field] = td.textContent;
+    });
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        td.textContent = input.value || valorOriginal;
+        datos[index][field] = td.textContent;
+      }
     });
   };
 
-  document.getElementById("exportExcel").addEventListener("click", () => {
-    const ws = XLSX.utils.json_to_sheet(datos);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
-    XLSX.writeFile(wb, "actividades.xlsx");
+  guardarDatosBtn.addEventListener("click", async () => {
+    await guardarDatos();
+    feedback.textContent = "✅ Cambios guardados correctamente";
   });
 
   anteriorBtn.addEventListener("click", () => {
@@ -126,14 +133,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   ordenarFechaBtn.addEventListener("click", () => {
-    // Alternar entre orden ascendente y descendente
     datos.sort((a, b) => {
       return ordenAscendente 
         ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
         : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
     });
-    ordenAscendente = !ordenAscendente; // Cambiar el estado
+    ordenAscendente = !ordenAscendente;
     renderizarTabla();
+  });
+
+  document.getElementById("exportExcel").addEventListener("click", () => {
+    const ws = XLSX.utils.json_to_sheet(datos);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
+    XLSX.writeFile(wb, "actividades.xlsx");
   });
 
   cargarDatos();
