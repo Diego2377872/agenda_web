@@ -14,13 +14,6 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
     "fecha_inicial": "2025-05-05",
     "fecha_final": "2025-05-05",
     "actividad": "Oficina R.E",
@@ -42,11 +35,25 @@
     "viatico": ""
   },
   {
+    "fecha_inicial": "2025-05-08",
+    "fecha_final": "2025-05-08",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-05-09",
     "fecha_final": "2025-05-09",
     "actividad": "DGP",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-09",
+    "fecha_final": "2025-05-09",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
   },
   {
     "fecha_inicial": "2025-06-06",
@@ -63,15 +70,8 @@
     "viatico": "SI"
   },
   {
-    "fecha_inicial": "2025-05-08",
-    "fecha_final": "2025-05-08",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-09",
-    "fecha_final": "2025-05-09",
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
     "actividad": "Permiso ",
     "permiso_sandra": "Entregado ",
     "viatico": "No"
