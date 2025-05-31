@@ -84,6 +84,13 @@
     "viatico": "Si"
   },
   {
+    "fecha_inicial": "2025-05-27",
+    "fecha_final": "2025-05-29",
+    "actividad": "Reunión AEP y Japoneses",
+    "permiso_sandra": "No",
+    "viatico": "Si"
+  },
+  {
     "fecha_inicial": "2025-05-30",
     "fecha_final": "2025-05-30",
     "actividad": "Oficina R.E",
@@ -112,10 +119,10 @@
     "viatico": "SI"
   },
   {
-    "fecha_inicial": "2025-05-27",
-    "fecha_final": "2025-05-29",
-    "actividad": "Reunión AEP y Japoneses",
-    "permiso_sandra": "No",
-    "viatico": "Si"
+    "fecha_inicial": "2025-06-01",
+    "fecha_final": "2025-06-01",
+    "actividad": "Ok",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
