@@ -7,6 +7,13 @@
     "viatico": "No"
   },
   {
+    "fecha_inicial": "2025-03-01",
+    "fecha_final": "2025-03-02",
+    "actividad": "gg",
+    "permiso_sandra": "No",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-05-02",
     "fecha_final": "2025-05-02",
     "actividad": "Permiso ",
@@ -33,12 +40,5 @@
     "actividad": "Reunion DEAG",
     "permiso_sandra": "No",
     "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-03-01",
-    "fecha_final": "2025-03-02",
-    "actividad": "gg",
-    "permiso_sandra": "No",
-    "viatico": ""
   }
 ]
