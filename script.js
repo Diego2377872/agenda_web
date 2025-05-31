@@ -56,12 +56,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const renderizarTabla = () => {
     tabla.innerHTML = "";
+
     const datosFiltrados = datos.filter(d => {
-      const fecha = new Date(d.fecha_inicial);
+      const fecha = new Date(d.fecha_inicial + "T12:00:00"); // 🟢 Corrección aplicada aquí
       console.log(fecha, mesActual, anioActual); // Para depurar
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
-    
+
     console.log("Datos filtrados:", datosFiltrados); // Para depurar
 
     datosFiltrados.forEach((data, index) => {
@@ -133,10 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ordenarFechaBtn.addEventListener("click", () => {
     datos.sort((a, b) => {
       return ordenAscendente 
-        ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
-        : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
+        ? new Date(a.fecha_inicial + "T12:00:00") - new Date(b.fecha_inicial + "T12:00:00")
+        : new Date(b.fecha_inicial + "T12:00:00") - new Date(a.fecha_inicial + "T12:00:00");
     });
-    ordenAscendente = !ordenAscendente; // Cambiar el estado
+    ordenAscendente = !ordenAscendente;
     renderizarTabla();
   });
 
