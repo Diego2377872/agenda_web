@@ -103,5 +103,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-20",
+    "fecha_final": "2025-05-21",
+    "actividad": "CAPECO",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
   }
 ]
