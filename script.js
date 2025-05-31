@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       permiso_sandra: document.getElementById("permisoSandra").value,
       viatico: document.getElementById("viatico").value
     };
+    console.log("Actividad guardada:", nuevaActividad); // Para depurar
     datos.push(nuevaActividad);
     await guardarDatos();
     renderizarTabla();
@@ -57,8 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
     tabla.innerHTML = "";
     const datosFiltrados = datos.filter(d => {
       const fecha = new Date(d.fecha_inicial);
+      console.log(fecha, mesActual, anioActual); // Para depurar
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
+    
+    console.log("Datos filtrados:", datosFiltrados); // Para depurar
+
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
@@ -131,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
         : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
     });
-    ordenAscendente = !ordenAscendente;
+    ordenAscendente = !ordenAscendente; // Cambiar el estado
     renderizarTabla();
   });
 
