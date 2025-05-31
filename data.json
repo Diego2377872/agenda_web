@@ -14,13 +14,6 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado",
-    "viatico": "no"
-  },
-  {
     "fecha_inicial": "2025-05-12",
     "fecha_final": "2025-05-13",
     "actividad": "MINISTERIO DEL AMBIENTE",
@@ -40,5 +33,12 @@
     "actividad": "Reunion DEAG",
     "permiso_sandra": "No",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado",
+    "viatico": "NO"
   }
 ]
