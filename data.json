@@ -1,5 +1,26 @@
 [
   {
+    "fecha_inicial": "2025-06-06",
+    "fecha_final": "2025-06-11",
+    "actividad": "Reunion DEAG",
+    "permiso_sandra": "No",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MADES",
+    "permiso_sandra": "Entregado ",
+    "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado",
+    "viatico": "NO"
+  },
+  {
     "fecha_inicial": "2025-03-01",
     "fecha_final": "2025-05-02",
     "actividad": "Reunion DEAG",
@@ -17,27 +38,6 @@
     "fecha_inicial": "2025-05-20",
     "fecha_final": "2025-05-21",
     "actividad": "CAPECO ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "sí"
-  },
-  {
-    "fecha_inicial": "2025-06-06",
-    "fecha_final": "2025-06-11",
-    "actividad": "Reunion DEAG",
-    "permiso_sandra": "No",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado",
-    "viatico": "NO"
-  },
-  {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADES",
     "permiso_sandra": "Entregado ",
     "viatico": "SI"
   }
