@@ -1,11 +1,9 @@
-<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("actividadForm");
   const tabla = document.querySelector("#tablaActividades tbody");
   const feedback = document.createElement("div");
   form.after(feedback);
 
-  const guardarDatosBtn = document.getElementById("guardarDatos");
   const anteriorBtn = document.getElementById("anteriorMes");
   const siguienteBtn = document.getElementById("siguienteMes");
   const ordenarFechaBtn = document.getElementById("ordenarFecha");
@@ -13,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let datos = [];
   let mesActual = new Date().getMonth();
   let anioActual = new Date().getFullYear();
-  let ordenAscendente = true;
+  let ordenAscendente = true; // Controla el orden
 
   const cargarDatos = async () => {
     try {
@@ -61,70 +59,52 @@ document.addEventListener("DOMContentLoaded", () => {
       const fecha = new Date(d.fecha_inicial);
       return fecha.getMonth() === mesActual && fecha.getFullYear() === anioActual;
     });
-
     datosFiltrados.forEach((data, index) => {
       const fila = document.createElement("tr");
       fila.innerHTML = `
-        <td class="border px-2 py-1" data-field="fecha_inicial" data-index="${index}">${data.fecha_inicial}</td>
-        <td class="border px-2 py-1" data-field="fecha_final" data-index="${index}">${data.fecha_final}</td>
-        <td class="border px-2 py-1" data-field="actividad" data-index="${index}">${data.actividad}</td>
-        <td class="border px-2 py-1" data-field="permiso_sandra" data-index="${index}">${data.permiso_sandra}</td>
-        <td class="border px-2 py-1" data-field="viatico" data-index="${index}">${data.viatico}</td>
+        <td class="border px-2 py-1">${data.fecha_inicial}</td>
+        <td class="border px-2 py-1">${data.fecha_final}</td>
+        <td class="border px-2 py-1">${data.actividad}</td>
+        <td class="border px-2 py-1">${data.permiso_sandra}</td>
+        <td class="border px-2 py-1">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
-          <button class="editar bg-blue-500 text-white px-2 py-1 rounded" data-index="${index}">✏️ Editar</button>
+          <button class="editar bg-yellow-400 px-2 py-1 rounded" data-index="${index}">✏️</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
       `;
       tabla.appendChild(fila);
     });
 
-    // Evento de edición solo cuando se pulsa el botón "Editar"
-    document.querySelectorAll(".editar").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const i = e.target.dataset.index;
-        const fila = e.target.closest("tr");
-        const celdas = fila.querySelectorAll("td[data-field]");
-
-        celdas.forEach(td => {
-          const field = td.getAttribute("data-field");
-          const input = document.createElement("input");
-          input.type = "text";
-          input.value = td.textContent;
-          input.className = "w-full border rounded px-1";
-          td.innerHTML = "";
-          td.appendChild(input);
-
-          input.addEventListener("blur", () => {
-            const nuevoValor = input.value.trim();
-            if (nuevoValor !== "") {
-              datos[i][field] = nuevoValor;
-              td.textContent = nuevoValor;
-            } else {
-              td.textContent = datos[i][field];
-            }
-          });
-
-          input.addEventListener("keypress", e => {
-            if (e.key === "Enter") input.blur();
-          });
-        });
-      });
-    });
-
-    // Evento de eliminación
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
-        datos.splice(i, 1);
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === datosFiltrados[i].fecha_inicial && idx >= i);
+        datos.splice(realIndex, 1);
         await guardarDatos();
         renderizarTabla();
       });
     });
+
+    document.querySelectorAll(".editar").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const i = e.target.dataset.index;
+        const item = datosFiltrados[i];
+        document.getElementById("fechaInicial").value = item.fecha_inicial;
+        document.getElementById("fechaFinal").value = item.fecha_final;
+        document.getElementById("actividad").value = item.actividad;
+        document.getElementById("permisoSandra").value = item.permiso_sandra;
+        document.getElementById("viatico").value = item.viatico;
+        const realIndex = datos.findIndex((d, idx) => d.fecha_inicial === item.fecha_inicial && idx >= i);
+        datos.splice(realIndex, 1);
+      });
+    });
   };
 
-  guardarDatosBtn.addEventListener("click", async () => {
-    await guardarDatos();
-    feedback.textContent = "✅ Cambios guardados correctamente";
+  document.getElementById("exportExcel").addEventListener("click", () => {
+    const ws = XLSX.utils.json_to_sheet(datos);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
+    XLSX.writeFile(wb, "actividades.xlsx");
   });
 
   anteriorBtn.addEventListener("click", () => {
@@ -146,22 +126,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   ordenarFechaBtn.addEventListener("click", () => {
+    // Alternar entre orden ascendente y descendente
     datos.sort((a, b) => {
       return ordenAscendente 
         ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
         : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
     });
-    ordenAscendente = !ordenAscendente;
+    ordenAscendente = !ordenAscendente; // Cambiar el estado
     renderizarTabla();
-  });
-
-  document.getElementById("exportExcel").addEventListener("click", () => {
-    const ws = XLSX.utils.json_to_sheet(datos);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Actividades");
-    XLSX.writeFile(wb, "actividades.xlsx");
   });
 
   cargarDatos();
 });
-</script>
