@@ -77,6 +77,20 @@
     "viatico": ""
   },
   {
+    "fecha_inicial": "2025-05-20",
+    "fecha_final": "2025-05-21",
+    "actividad": "CAPECO",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-30",
+    "fecha_final": "2025-05-30",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-05-31",
     "fecha_final": "2025-05-31",
     "actividad": "Feriado",
@@ -98,17 +112,10 @@
     "viatico": "SI"
   },
   {
-    "fecha_inicial": "2025-05-30",
-    "fecha_final": "2025-05-30",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-20",
-    "fecha_final": "2025-05-21",
-    "actividad": "CAPECO",
-    "permiso_sandra": "Si",
+    "fecha_inicial": "2025-05-27",
+    "fecha_final": "2025-05-29",
+    "actividad": "Reunión AEP y Japoneses",
+    "permiso_sandra": "No",
     "viatico": "Si"
   }
 ]
