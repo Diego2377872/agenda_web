@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let datos = [];
   let mesActual = new Date().getMonth();
   let anioActual = new Date().getFullYear();
-  let ordenAscendente = true; // Controla el orden
+  let ordenAscendente = true;
 
   const cargarDatos = async () => {
     try {
@@ -126,13 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   ordenarFechaBtn.addEventListener("click", () => {
-    // Alternar entre orden ascendente y descendente
     datos.sort((a, b) => {
       return ordenAscendente 
         ? new Date(a.fecha_inicial) - new Date(b.fecha_inicial)
         : new Date(b.fecha_inicial) - new Date(a.fecha_inicial);
     });
-    ordenAscendente = !ordenAscendente; // Cambiar el estado
+    ordenAscendente = !ordenAscendente;
     renderizarTabla();
   });
 
