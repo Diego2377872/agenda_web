@@ -76,17 +76,18 @@ document.addEventListener("DOMContentLoaded", () => {
       tabla.appendChild(fila);
     });
 
-    // Evento de eliminación
+    // Eliminar registros
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
         datos.splice(i, 1);
         await guardarDatos();
         renderizarTabla();
+        feedback.textContent = "✅ Registro eliminado";
       });
     });
 
-    // Evento de edición inline
+    // Edición en línea con guardado
     document.querySelectorAll("#tablaActividades td[data-field]").forEach(td => {
       td.addEventListener("click", () => {
         const field = td.getAttribute("data-field");
@@ -102,18 +103,21 @@ document.addEventListener("DOMContentLoaded", () => {
         td.appendChild(input);
         input.focus();
 
-        const guardarCambio = () => {
+        const guardarCambio = async () => {
           const nuevoValor = input.value.trim();
           if (nuevoValor !== "") {
             datos[index][field] = nuevoValor;
             td.textContent = nuevoValor;
+            await guardarDatos();
+            feedback.textContent = "✅ Cambio guardado";
+            setTimeout(() => feedback.textContent = "", 2000);
           } else {
             td.textContent = valorOriginal;
           }
         };
 
         input.addEventListener("blur", guardarCambio);
-        input.addEventListener("keypress", e => {
+        input.addEventListener("keypress", (e) => {
           if (e.key === "Enter") {
             guardarCambio();
           }
@@ -124,7 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   guardarDatosBtn.addEventListener("click", async () => {
     await guardarDatos();
-    feedback.textContent = "✅ Cambios guardados correctamente";
+    feedback.textContent = "✅ Cambios guardados manualmente";
+    setTimeout(() => feedback.textContent = "", 2000);
   });
 
   anteriorBtn.addEventListener("click", () => {
@@ -164,4 +169,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cargarDatos();
 });
-
