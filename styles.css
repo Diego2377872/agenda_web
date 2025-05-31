@@ -27,8 +27,7 @@ form {
   margin-bottom: 30px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  align-items: flex-end;
+  gap: 15px; /* Espaciado uniforme */
 }
 
 input, select, button {
@@ -53,6 +52,7 @@ button {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
 }
 
 button:hover {
@@ -91,6 +91,6 @@ tr:hover {
   }
 
   table {
-    font-size: 14px;
+    font-size: 14px; /* Tamaño de fuente ajustado para pantallas pequeñas */
   }
 }
