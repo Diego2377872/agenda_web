@@ -1,3 +1,4 @@
+<script>
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("actividadForm");
   const tabla = document.querySelector("#tablaActividades tbody");
@@ -70,66 +71,60 @@ document.addEventListener("DOMContentLoaded", () => {
         <td class="border px-2 py-1" data-field="permiso_sandra" data-index="${index}">${data.permiso_sandra}</td>
         <td class="border px-2 py-1" data-field="viatico" data-index="${index}">${data.viatico}</td>
         <td class="border px-2 py-1 space-x-2">
+          <button class="editar bg-blue-500 text-white px-2 py-1 rounded" data-index="${index}">✏️ Editar</button>
           <button class="eliminar bg-red-500 text-white px-2 py-1 rounded" data-index="${index}">🗑️</button>
         </td>
       `;
       tabla.appendChild(fila);
     });
 
-    // Eliminar registros
+    // Evento de edición solo cuando se pulsa el botón "Editar"
+    document.querySelectorAll(".editar").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        const i = e.target.dataset.index;
+        const fila = e.target.closest("tr");
+        const celdas = fila.querySelectorAll("td[data-field]");
+
+        celdas.forEach(td => {
+          const field = td.getAttribute("data-field");
+          const input = document.createElement("input");
+          input.type = "text";
+          input.value = td.textContent;
+          input.className = "w-full border rounded px-1";
+          td.innerHTML = "";
+          td.appendChild(input);
+
+          input.addEventListener("blur", () => {
+            const nuevoValor = input.value.trim();
+            if (nuevoValor !== "") {
+              datos[i][field] = nuevoValor;
+              td.textContent = nuevoValor;
+            } else {
+              td.textContent = datos[i][field];
+            }
+          });
+
+          input.addEventListener("keypress", e => {
+            if (e.key === "Enter") input.blur();
+          });
+        });
+      });
+    });
+
+    // Evento de eliminación
     document.querySelectorAll(".eliminar").forEach(btn => {
       btn.addEventListener("click", async (e) => {
         const i = e.target.dataset.index;
         datos.splice(i, 1);
         await guardarDatos();
         renderizarTabla();
-        feedback.textContent = "✅ Registro eliminado";
-      });
-    });
-
-    // Edición en línea con guardado
-    document.querySelectorAll("#tablaActividades td[data-field]").forEach(td => {
-      td.addEventListener("click", () => {
-        const field = td.getAttribute("data-field");
-        const index = td.getAttribute("data-index");
-        const valorOriginal = td.textContent;
-
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = valorOriginal;
-        input.className = "w-full border rounded px-1";
-
-        td.textContent = "";
-        td.appendChild(input);
-        input.focus();
-
-        const guardarCambio = async () => {
-          const nuevoValor = input.value.trim();
-          if (nuevoValor !== "") {
-            datos[index][field] = nuevoValor;
-            td.textContent = nuevoValor;
-            await guardarDatos();
-            feedback.textContent = "✅ Cambio guardado";
-            setTimeout(() => feedback.textContent = "", 2000);
-          } else {
-            td.textContent = valorOriginal;
-          }
-        };
-
-        input.addEventListener("blur", guardarCambio);
-        input.addEventListener("keypress", (e) => {
-          if (e.key === "Enter") {
-            guardarCambio();
-          }
-        });
       });
     });
   };
 
   guardarDatosBtn.addEventListener("click", async () => {
     await guardarDatos();
-    feedback.textContent = "✅ Cambios guardados manualmente";
-    setTimeout(() => feedback.textContent = "", 2000);
+    feedback.textContent = "✅ Cambios guardados correctamente";
   });
 
   anteriorBtn.addEventListener("click", () => {
@@ -169,3 +164,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cargarDatos();
 });
+</script>
