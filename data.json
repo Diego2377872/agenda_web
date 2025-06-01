@@ -117,5 +117,12 @@
     "actividad": "DGP",
     "permiso_sandra": "NO",
     "viatico": "SI"
+  },
+  {
+    "fecha_inicial": "2025-07-01",
+    "fecha_final": "2025-07-01",
+    "actividad": "ddd",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
