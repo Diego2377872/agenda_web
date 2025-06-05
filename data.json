@@ -124,5 +124,12 @@
     "actividad": "Viaje a Asunción",
     "permiso_sandra": "Entregado",
     "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-06-05",
+    "fecha_final": "2025-06-05",
+    "actividad": "Permiso, lluvia intensa ",
+    "permiso_sandra": "Sin entregar",
+    "viatico": ""
   }
 ]
