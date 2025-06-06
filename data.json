@@ -129,14 +129,7 @@
     "fecha_inicial": "2025-06-05",
     "fecha_final": "2025-06-05",
     "actividad": "Permiso, lluvia intensa ",
-    "permiso_sandra": "Sin entregar",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-06",
-    "fecha_final": "2025-06-06",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
+    "permiso_sandra": "Entregado",
     "viatico": ""
   }
 ]
