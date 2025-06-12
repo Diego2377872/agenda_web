@@ -14,13 +14,6 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-06-09",
-    "fecha_final": "2025-06-10",
-    "actividad": "Viaje a Asunción ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Sí "
-  },
-  {
     "fecha_inicial": "2025-06-06",
     "fecha_final": "2025-06-06",
     "actividad": "Oficina RE ",
@@ -152,5 +145,12 @@
     "actividad": "Oficina RE ",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-09",
+    "fecha_final": "2025-06-10",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Entregado",
+    "viatico": "Sí "
   }
 ]
