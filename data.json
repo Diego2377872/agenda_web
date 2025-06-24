@@ -180,5 +180,12 @@
     "actividad": "Viaje a Asunción ",
     "permiso_sandra": "Entregado",
     "viatico": "Sí "
+  },
+  {
+    "fecha_inicial": "2025-06-23",
+    "fecha_final": "2025-06-23",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
