@@ -236,5 +236,12 @@
     "actividad": "Viaje a Caazapá y Pilar",
     "permiso_sandra": "Sin Entregar ",
     "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-07-10",
+    "fecha_final": "2025-07-10",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
