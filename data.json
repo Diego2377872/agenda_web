@@ -1,5 +1,12 @@
 [
   {
+    "fecha_inicial": "2025-07-16",
+    "fecha_final": "2025-07-16",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-07-15",
     "fecha_final": "2025-07-15",
     "actividad": "Oficina R.E",
@@ -266,8 +273,8 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-07-16",
-    "fecha_final": "2025-07-16",
+    "fecha_inicial": "2025-07-17",
+    "fecha_final": "2025-07-17",
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
