@@ -1,5 +1,19 @@
 [
   {
+    "fecha_inicial": "2025-07-21",
+    "fecha_final": "2025-07-21",
+    "actividad": "Oficina RE, salida a las 16:00",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-18",
+    "fecha_final": "2025-07-18",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Sin entregar",
+    "viatico": "No"
+  },
+  {
     "fecha_inicial": "2025-07-17",
     "fecha_final": "2025-07-17",
     "actividad": "Oficina R.E",
@@ -40,6 +54,13 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-07",
+    "fecha_final": "2025-07-09",
+    "actividad": "Viaje a Caazapá y Pilar",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
   },
   {
     "fecha_inicial": "2025-07-04",
@@ -273,24 +294,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-07-07",
-    "fecha_final": "2025-07-09",
-    "actividad": "Viaje a Caazapá y Pilar",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-07-18",
-    "fecha_final": "2025-07-18",
-    "actividad": "Descanso en casa",
-    "permiso_sandra": "Sin entregar",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-07-21",
-    "fecha_final": "2025-07-21",
-    "actividad": "Oficina RE, salida a las 16:00",
-    "permiso_sandra": "",
-    "viatico": ""
+    "fecha_inicial": "2025-07-22",
+    "fecha_final": "2025-07-23",
+    "actividad": "Viaje a Asunción (MAG, FAO)",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "Sí "
   }
 ]
