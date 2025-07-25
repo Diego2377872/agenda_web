@@ -306,5 +306,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-25",
+    "fecha_final": "2025-07-25",
+    "actividad": "Permiso en casa ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": ""
   }
 ]
