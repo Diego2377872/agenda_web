@@ -35,6 +35,20 @@
     "viatico": ""
   },
   {
+    "fecha_inicial": "2025-07-18",
+    "fecha_final": "2025-07-18",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-18",
+    "fecha_final": "2025-07-18",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
     "fecha_inicial": "2025-07-17",
     "fecha_final": "2025-07-17",
     "actividad": "Oficina R.E",
@@ -315,17 +329,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-07-18",
-    "fecha_final": "2025-07-18",
-    "actividad": "Descanso en casa",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-07-18",
-    "fecha_final": "2025-07-18",
-    "actividad": "Descanso en casa",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
+    "fecha_inicial": "2025-07-29",
+    "fecha_final": "2025-07-29",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
