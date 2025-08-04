@@ -355,5 +355,12 @@
     "actividad": "Descanso en casa ",
     "permiso_sandra": "Sin entregar ",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-08-04",
+    "fecha_final": "2025-08-08",
+    "actividad": "Viaje a San Pedro, planes de Acción Anticipatorias ",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": "Si"
   }
 ]
