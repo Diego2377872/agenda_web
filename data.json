@@ -350,13 +350,6 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-08-01",
-    "fecha_final": "2025-08-01",
-    "actividad": "Descanso en casa ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "No"
-  },
-  {
     "fecha_inicial": "2025-08-04",
     "fecha_final": "2025-08-08",
     "actividad": "Viaje a San Pedro, planes de Acción Anticipatorias ",
@@ -376,5 +369,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-08-01",
+    "fecha_final": "2025-08-01",
+    "actividad": "Descanso en casa ",
+    "permiso_sandra": "Entregado",
+    "viatico": "No"
   }
 ]
