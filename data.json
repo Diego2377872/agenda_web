@@ -376,5 +376,12 @@
     "actividad": "Viaje a Caazapá y Pilar ",
     "permiso_sandra": "Entregado ",
     "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-08-19",
+    "fecha_final": "2025-08-19",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "No"
   }
 ]
