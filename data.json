@@ -357,13 +357,6 @@
     "viatico": "Si"
   },
   {
-    "fecha_inicial": "2025-08-11",
-    "fecha_final": "2025-08-14",
-    "actividad": "Viaje a Caazapá y Pilar, planes de acción anticipatorias.",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Si "
-  },
-  {
     "fecha_inicial": "2025-08-18",
     "fecha_final": "2025-08-18",
     "actividad": "Oficina R.E",
@@ -376,5 +369,12 @@
     "actividad": "Descanso en casa ",
     "permiso_sandra": "Entregado",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-08-11",
+    "fecha_final": "2025-08-14",
+    "actividad": "Viaje a Caazapá y Pilar, planes de acción anticipatorias.",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si "
   }
 ]
