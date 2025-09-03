@@ -397,5 +397,12 @@
     "actividad": "Viaje a Caazapá y San Pedro ",
     "permiso_sandra": "Sin entregar",
     "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-09-01",
+    "fecha_final": "2025-09-01",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
   }
 ]
