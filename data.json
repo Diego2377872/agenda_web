@@ -406,17 +406,17 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-02",
-    "fecha_final": "2025-09-02",
-    "actividad": "DEAg San Lorenzo, reunión proyecto KOICA ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": ""
-  },
-  {
     "fecha_inicial": "2025-09-03",
     "fecha_final": "2025-09-03",
     "actividad": "Oficina RE ",
     "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-02",
+    "fecha_final": "2025-09-02",
+    "actividad": "DEAg San Lorenzo, reunión proyecto KOICA ",
+    "permiso_sandra": "Permiso Entregado",
     "viatico": ""
   }
 ]
