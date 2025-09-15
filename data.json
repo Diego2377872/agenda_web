@@ -1,5 +1,33 @@
 [
   {
+    "fecha_inicial": "2025-09-11",
+    "fecha_final": "2025-09-12",
+    "actividad": "Viaje a Asunción, taller AEP",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-09-10",
+    "fecha_final": "2025-09-10",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-09",
+    "fecha_final": "2025-09-09",
+    "actividad": "Reunion en la DEAG ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-08",
+    "fecha_final": "2025-09-08",
+    "actividad": "Asueto Distrital ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-09-05",
     "fecha_final": "2025-09-05",
     "actividad": "Asueto Nacional ",
@@ -434,31 +462,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-08",
-    "fecha_final": "2025-09-08",
-    "actividad": "Asueto Distrital ",
+    "fecha_inicial": "2025-09-15",
+    "fecha_final": "2025-09-15",
+    "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-09",
-    "fecha_final": "2025-09-09",
-    "actividad": "Reunion en la DEAG ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-10",
-    "fecha_final": "2025-09-10",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-11",
-    "fecha_final": "2025-09-12",
-    "actividad": "Viaje a Asunción, taller AEP",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Si"
   }
 ]
