@@ -467,5 +467,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-16",
+    "fecha_final": "2025-09-18",
+    "actividad": "Congreso Forestal ",
+    "permiso_sandra": "",
+    "viatico": "No"
   }
 ]
