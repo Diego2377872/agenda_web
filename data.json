@@ -481,5 +481,12 @@
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-22",
+    "fecha_final": "2025-09-22",
+    "actividad": "Ausencia ",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": ""
   }
 ]
