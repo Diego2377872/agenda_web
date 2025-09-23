@@ -441,6 +441,13 @@
     "viatico": ""
   },
   {
+    "fecha_inicial": "2025-09-09",
+    "fecha_final": "2025-09-09",
+    "actividad": "Reunion en la DEAG ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "No"
+  },
+  {
     "fecha_inicial": "2025-09-10",
     "fecha_final": "2025-09-10",
     "actividad": "Oficina RE ",
@@ -483,10 +490,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-09",
-    "fecha_final": "2025-09-09",
-    "actividad": "Reunion en la DEAG ",
-    "permiso_sandra": "Sin entregar ",
+    "fecha_inicial": "2025-09-23",
+    "fecha_final": "2025-09-23",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Sin Entregar ",
     "viatico": "No"
   }
 ]
