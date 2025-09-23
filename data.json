@@ -488,5 +488,12 @@
     "actividad": "Ausencia ",
     "permiso_sandra": "Sin Entregar ",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-23",
+    "fecha_final": "2025-09-23",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": "No"
   }
 ]
