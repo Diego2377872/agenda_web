@@ -1,469 +1,14 @@
 [
   {
-    "fecha_inicial": "2025-03-01",
-    "fecha_final": "2025-05-02",
-    "actividad": "Reunion DEAG",
-    "permiso_sandra": "No",
-    "viatico": "no"
-  },
-  {
-    "fecha_inicial": "2025-03-01",
-    "fecha_final": "2025-03-02",
-    "actividad": "MINISTERIO DEL AMBIENT",
-    "permiso_sandra": "Entregado",
+    "fecha_inicial": "2025-09-22",
+    "fecha_final": "2025-09-22",
+    "actividad": "Ausencia ",
+    "permiso_sandra": "Permiso entregado. ",
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-05-01",
-    "fecha_final": "2025-05-01",
-    "actividad": "Feriado",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-02",
-    "fecha_final": "2025-05-02",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-05-05",
-    "fecha_final": "2025-05-05",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-06",
-    "fecha_final": "2025-05-06",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-07",
-    "fecha_final": "2025-05-07",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-08",
-    "fecha_final": "2025-05-08",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-09",
-    "fecha_final": "2025-05-09",
-    "actividad": "Permiso ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-05-12",
-    "fecha_final": "2025-05-13",
-    "actividad": "MADES, Reunión con el Dr Kohli Tema Tesis",
-    "permiso_sandra": "Si",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-16",
-    "fecha_final": "2025-05-16",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-05-20",
-    "fecha_final": "2025-05-21",
-    "actividad": "CAPECO",
-    "permiso_sandra": "Si",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-27",
-    "fecha_final": "2025-05-29",
-    "actividad": "Reunión AEP y Japoneses",
-    "permiso_sandra": "No",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-05-30",
-    "fecha_final": "2025-05-30",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-02",
-    "fecha_final": "2025-06-03",
-    "actividad": "Viaje a Asunción",
-    "permiso_sandra": "Entregado",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-06-04",
-    "fecha_final": "2025-06-04",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-05",
-    "fecha_final": "2025-06-05",
-    "actividad": "Permiso, lluvia intensa ",
-    "permiso_sandra": "Entregado",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-06",
-    "fecha_final": "2025-06-06",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-09",
-    "fecha_final": "2025-06-10",
-    "actividad": "Viaje a Asunción ",
-    "permiso_sandra": "Entregado",
-    "viatico": "Sí "
-  },
-  {
-    "fecha_inicial": "2025-06-11",
-    "fecha_final": "2025-06-11",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-12",
-    "fecha_final": "2025-06-12",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-13",
-    "fecha_final": "2025-06-13",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-16",
-    "fecha_final": "2025-06-16",
-    "actividad": "Feriado",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-18",
-    "fecha_final": "2025-06-20",
-    "actividad": "Viaje a Asunción ",
-    "permiso_sandra": "Entregado",
-    "viatico": "Sí "
-  },
-  {
-    "fecha_inicial": "2025-06-23",
-    "fecha_final": "2025-06-23",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-24",
-    "fecha_final": "2025-06-25",
-    "actividad": "Viaje Asunción ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-06-26",
-    "fecha_final": "2025-06-26",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-27",
-    "fecha_final": "2025-06-27",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-06-30",
-    "fecha_final": "2025-06-30",
-    "actividad": "Viaje a San Lorenzo, Reunión Concurso y MAG central",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-07-01",
-    "fecha_final": "2025-07-01",
-    "actividad": "Viaje a San Lorenzo, Censos ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-07-02",
-    "fecha_final": "2025-07-02",
-    "actividad": "Viaje a Asuncion, Entrega de postulación Concurso",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-07-03",
-    "fecha_final": "2025-07-03",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-04",
-    "fecha_final": "2025-07-04",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-07",
-    "fecha_final": "2025-07-09",
-    "actividad": "Viaje a Caazapá y Pilar",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-07-10",
-    "fecha_final": "2025-07-10",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-11",
-    "fecha_final": "2025-07-11",
-    "actividad": "Oficina R.E ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-14",
-    "fecha_final": "2025-07-14",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-15",
-    "fecha_final": "2025-07-15",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-16",
-    "fecha_final": "2025-07-16",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-17",
-    "fecha_final": "2025-07-17",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-18",
-    "fecha_final": "2025-07-18",
-    "actividad": "Descanso en casa",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-07-18",
-    "fecha_final": "2025-07-18",
-    "actividad": "Descanso en casa",
-    "permiso_sandra": "Entregado ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-07-21",
-    "fecha_final": "2025-07-21",
-    "actividad": "Oficina RE, salida a las 16:00",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-22",
-    "fecha_final": "2025-07-23",
-    "actividad": "Viaje a Asunción (MAG, FAO)",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Sí "
-  },
-  {
-    "fecha_inicial": "2025-07-24",
-    "fecha_final": "2025-07-24",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-25",
-    "fecha_final": "2025-07-25",
-    "actividad": "Permiso en casa ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-28",
-    "fecha_final": "2025-07-28",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-29",
-    "fecha_final": "2025-07-29",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-30",
-    "fecha_final": "2025-07-30",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-07-31",
-    "fecha_final": "2025-07-31",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-08-01",
-    "fecha_final": "2025-08-01",
-    "actividad": "Descanso en casa ",
-    "permiso_sandra": "Entregado",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-08-04",
-    "fecha_final": "2025-08-08",
-    "actividad": "Viaje a San Pedro, planes de Acción Anticipatorias ",
-    "permiso_sandra": "Entregado",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-08-11",
-    "fecha_final": "2025-08-14",
-    "actividad": "Viaje a Caazapá y Pilar ",
-    "permiso_sandra": "Entregado ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-08-18",
-    "fecha_final": "2025-08-18",
-    "actividad": "Oficina R.E",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-08-19",
-    "fecha_final": "2025-08-19",
-    "actividad": "Viaje a Asunción ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-08-20",
-    "fecha_final": "2025-08-20",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-08-25",
-    "fecha_final": "2025-08-29",
-    "actividad": "Viaje a Caazapá y San Pedro ",
-    "permiso_sandra": "Sin entregar",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-09-01",
-    "fecha_final": "2025-09-01",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-02",
-    "fecha_final": "2025-09-02",
-    "actividad": "DEAg San Lorenzo, reunión proyecto KOICA ",
-    "permiso_sandra": "Permiso Entregado",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-03",
-    "fecha_final": "2025-09-03",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-04",
-    "fecha_final": "2025-09-04",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-05",
-    "fecha_final": "2025-09-05",
-    "actividad": "Asueto Nacional ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-08",
-    "fecha_final": "2025-09-08",
-    "actividad": "Asueto Distrital ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-09",
-    "fecha_final": "2025-09-09",
-    "actividad": "Reunion en la DEAG ",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "No"
-  },
-  {
-    "fecha_inicial": "2025-09-10",
-    "fecha_final": "2025-09-10",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-09-11",
-    "fecha_final": "2025-09-12",
-    "actividad": "Viaje a Asunción, taller AEP",
-    "permiso_sandra": "Sin entregar ",
-    "viatico": "Si"
-  },
-  {
-    "fecha_inicial": "2025-09-15",
-    "fecha_final": "2025-09-15",
+    "fecha_inicial": "2025-09-19",
+    "fecha_final": "2025-09-19",
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
@@ -476,24 +21,472 @@
     "viatico": "No"
   },
   {
-    "fecha_inicial": "2025-09-19",
-    "fecha_final": "2025-09-19",
+    "fecha_inicial": "2025-09-15",
+    "fecha_final": "2025-09-15",
     "actividad": "Oficina R.E",
     "permiso_sandra": "",
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-22",
-    "fecha_final": "2025-09-22",
-    "actividad": "Ausencia ",
-    "permiso_sandra": "Permiso entregado. ",
+    "fecha_inicial": "2025-09-11",
+    "fecha_final": "2025-09-12",
+    "actividad": "Viaje a Asunción, taller AEP",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-09-10",
+    "fecha_final": "2025-09-10",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-22",
-    "fecha_final": "2025-09-22",
-    "actividad": "Ausencia ",
-    "permiso_sandra": "Permiso entregado. ",
+    "fecha_inicial": "2025-09-09",
+    "fecha_final": "2025-09-09",
+    "actividad": "Reunion en la DEAG ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-09-08",
+    "fecha_final": "2025-09-08",
+    "actividad": "Asueto Distrital ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-05",
+    "fecha_final": "2025-09-05",
+    "actividad": "Asueto Nacional ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-04",
+    "fecha_final": "2025-09-04",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-03",
+    "fecha_final": "2025-09-03",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-02",
+    "fecha_final": "2025-09-02",
+    "actividad": "DEAg San Lorenzo, reunión proyecto KOICA ",
+    "permiso_sandra": "Permiso Entregado",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-01",
+    "fecha_final": "2025-09-01",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-08-25",
+    "fecha_final": "2025-08-29",
+    "actividad": "Viaje a Caazapá y San Pedro ",
+    "permiso_sandra": "Sin entregar",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-08-20",
+    "fecha_final": "2025-08-20",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-08-19",
+    "fecha_final": "2025-08-19",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-08-18",
+    "fecha_final": "2025-08-18",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-08-11",
+    "fecha_final": "2025-08-14",
+    "actividad": "Viaje a Caazapá y Pilar ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-08-04",
+    "fecha_final": "2025-08-08",
+    "actividad": "Viaje a San Pedro, planes de Acción Anticipatorias ",
+    "permiso_sandra": "Entregado",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-08-01",
+    "fecha_final": "2025-08-01",
+    "actividad": "Descanso en casa ",
+    "permiso_sandra": "Entregado",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-31",
+    "fecha_final": "2025-07-31",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-30",
+    "fecha_final": "2025-07-30",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-29",
+    "fecha_final": "2025-07-29",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-28",
+    "fecha_final": "2025-07-28",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-25",
+    "fecha_final": "2025-07-25",
+    "actividad": "Permiso en casa ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-24",
+    "fecha_final": "2025-07-24",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-22",
+    "fecha_final": "2025-07-23",
+    "actividad": "Viaje a Asunción (MAG, FAO)",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "Sí "
+  },
+  {
+    "fecha_inicial": "2025-07-21",
+    "fecha_final": "2025-07-21",
+    "actividad": "Oficina RE, salida a las 16:00",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-18",
+    "fecha_final": "2025-07-18",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-18",
+    "fecha_final": "2025-07-18",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-07-17",
+    "fecha_final": "2025-07-17",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-16",
+    "fecha_final": "2025-07-16",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-15",
+    "fecha_final": "2025-07-15",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-14",
+    "fecha_final": "2025-07-14",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-11",
+    "fecha_final": "2025-07-11",
+    "actividad": "Oficina R.E ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-10",
+    "fecha_final": "2025-07-10",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-07",
+    "fecha_final": "2025-07-09",
+    "actividad": "Viaje a Caazapá y Pilar",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-07-04",
+    "fecha_final": "2025-07-04",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-03",
+    "fecha_final": "2025-07-03",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-07-02",
+    "fecha_final": "2025-07-02",
+    "actividad": "Viaje a Asuncion, Entrega de postulación Concurso",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-07-01",
+    "fecha_final": "2025-07-01",
+    "actividad": "Viaje a San Lorenzo, Censos ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-06-30",
+    "fecha_final": "2025-06-30",
+    "actividad": "Viaje a San Lorenzo, Reunión Concurso y MAG central",
+    "permiso_sandra": "Entregado ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-06-27",
+    "fecha_final": "2025-06-27",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-26",
+    "fecha_final": "2025-06-26",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-24",
+    "fecha_final": "2025-06-25",
+    "actividad": "Viaje Asunción ",
+    "permiso_sandra": "Sin entregar ",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-06-23",
+    "fecha_final": "2025-06-23",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-18",
+    "fecha_final": "2025-06-20",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Entregado",
+    "viatico": "Sí "
+  },
+  {
+    "fecha_inicial": "2025-06-16",
+    "fecha_final": "2025-06-16",
+    "actividad": "Feriado",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-13",
+    "fecha_final": "2025-06-13",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-12",
+    "fecha_final": "2025-06-12",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-11",
+    "fecha_final": "2025-06-11",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-09",
+    "fecha_final": "2025-06-10",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Entregado",
+    "viatico": "Sí "
+  },
+  {
+    "fecha_inicial": "2025-06-06",
+    "fecha_final": "2025-06-06",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-05",
+    "fecha_final": "2025-06-05",
+    "actividad": "Permiso, lluvia intensa ",
+    "permiso_sandra": "Entregado",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-04",
+    "fecha_final": "2025-06-04",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-06-02",
+    "fecha_final": "2025-06-03",
+    "actividad": "Viaje a Asunción",
+    "permiso_sandra": "Entregado",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-30",
+    "fecha_final": "2025-05-30",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-27",
+    "fecha_final": "2025-05-29",
+    "actividad": "Reunión AEP y Japoneses",
+    "permiso_sandra": "No",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-20",
+    "fecha_final": "2025-05-21",
+    "actividad": "CAPECO",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-16",
+    "fecha_final": "2025-05-16",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-12",
+    "fecha_final": "2025-05-13",
+    "actividad": "MADES, Reunión con el Dr Kohli Tema Tesis",
+    "permiso_sandra": "Si",
+    "viatico": "Si"
+  },
+  {
+    "fecha_inicial": "2025-05-09",
+    "fecha_final": "2025-05-09",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-08",
+    "fecha_final": "2025-05-08",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-07",
+    "fecha_final": "2025-05-07",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-06",
+    "fecha_final": "2025-05-06",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-05",
+    "fecha_final": "2025-05-05",
+    "actividad": "Oficina R.E",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-05-02",
+    "fecha_final": "2025-05-02",
+    "actividad": "Permiso ",
+    "permiso_sandra": "Entregado ",
+    "viatico": "No"
+  },
+  {
+    "fecha_inicial": "2025-05-01",
+    "fecha_final": "2025-05-01",
+    "actividad": "Feriado",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-03-01",
+    "fecha_final": "2025-05-02",
+    "actividad": "Reunion DEAG",
+    "permiso_sandra": "No",
+    "viatico": "no"
+  },
+  {
+    "fecha_inicial": "2025-03-01",
+    "fecha_final": "2025-03-02",
+    "actividad": "MINISTERIO DEL AMBIENT",
+    "permiso_sandra": "Entregado",
     "viatico": ""
   }
 ]
