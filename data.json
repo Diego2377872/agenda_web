@@ -1,5 +1,12 @@
 [
   {
+    "fecha_inicial": "2025-09-29",
+    "fecha_final": "2025-09-29",
+    "actividad": "Feriado Nacional",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-09-24",
     "fecha_final": "2025-09-26",
     "actividad": "Viaje a Coronel Oviedo y Caazapá ",
@@ -504,9 +511,9 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-29",
-    "fecha_final": "2025-09-29",
-    "actividad": "Feriado Nacional",
+    "fecha_inicial": "2025-09-30",
+    "fecha_final": "2025-09-30",
+    "actividad": "Oficina RE ",
     "permiso_sandra": "",
     "viatico": ""
   }
