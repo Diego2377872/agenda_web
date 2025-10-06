@@ -1,5 +1,33 @@
 [
   {
+    "fecha_inicial": "2025-10-03",
+    "fecha_final": "2025-10-03",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-10-02",
+    "fecha_final": "2025-10-02",
+    "actividad": "Viaje a Asunción ",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": "No "
+  },
+  {
+    "fecha_inicial": "2025-10-01",
+    "fecha_final": "2025-10-01",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-09-30",
+    "fecha_final": "2025-09-30",
+    "actividad": "Oficina RE ",
+    "permiso_sandra": "",
+    "viatico": ""
+  },
+  {
     "fecha_inicial": "2025-09-29",
     "fecha_final": "2025-09-29",
     "actividad": "Feriado Nacional",
@@ -511,31 +539,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-09-30",
-    "fecha_final": "2025-09-30",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-10-01",
-    "fecha_final": "2025-10-01",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
-    "viatico": ""
-  },
-  {
-    "fecha_inicial": "2025-10-02",
-    "fecha_final": "2025-10-02",
-    "actividad": "Viaje a Asunción ",
-    "permiso_sandra": "Sin Entregar ",
-    "viatico": "No "
-  },
-  {
-    "fecha_inicial": "2025-10-03",
-    "fecha_final": "2025-10-03",
-    "actividad": "Oficina RE ",
-    "permiso_sandra": "",
+    "fecha_inicial": "2025-10-06",
+    "fecha_final": "2025-10-10",
+    "actividad": "Vacaciones ",
+    "permiso_sandra": "Entregado ",
     "viatico": ""
   }
 ]
