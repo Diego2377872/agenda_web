@@ -1,5 +1,12 @@
 [
   {
+    "fecha_inicial": "2025-10-27",
+    "fecha_final": "2025-10-30",
+    "actividad": "Viaje a San Pedro ",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": "Si "
+  },
+  {
     "fecha_inicial": "2025-10-24",
     "fecha_final": "2025-10-24",
     "actividad": "Oficina RE(Salida sin marcar por falta de electricidad) ",
@@ -574,10 +581,10 @@
     "viatico": ""
   },
   {
-    "fecha_inicial": "2025-10-27",
-    "fecha_final": "2025-10-30",
-    "actividad": "Viaje a San Pedro ",
+    "fecha_inicial": "2025-10-31",
+    "fecha_final": "2025-10-31",
+    "actividad": "Descanso ",
     "permiso_sandra": "Sin Entregar ",
-    "viatico": "Si "
+    "viatico": "No"
   }
 ]
