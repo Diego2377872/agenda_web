@@ -579,5 +579,12 @@
     "actividad": "MINISTERIO DEL AMBIENT",
     "permiso_sandra": "Entregado",
     "viatico": ""
+  },
+  {
+    "fecha_inicial": "2025-10-31",
+    "fecha_final": "2025-10-31",
+    "actividad": "Descanso en casa",
+    "permiso_sandra": "Sin Entregar ",
+    "viatico": "No"
   }
 ]
